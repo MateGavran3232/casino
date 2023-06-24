@@ -1,5 +1,5 @@
 import "../styles/Carousel.css";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 
 interface CarouselProps {
   images: string[];
@@ -7,17 +7,31 @@ interface CarouselProps {
 
 const Carousel: React.FC<CarouselProps> = ({ images }) => {
   const [currentSlide, setCurrentSlide] = useState<number>(0);
+  const intervalRef = useRef<NodeJS.Timeout | undefined>(undefined);
 
-  useEffect(() => {
-    const interval = setInterval(() => {
+  const startInterval = useCallback(() => {
+    if (intervalRef.current) {
+      clearInterval(intervalRef.current);
+    }
+
+    intervalRef.current = setInterval(() => {
       setCurrentSlide((prevSlide) => (prevSlide + 1) % images.length);
     }, 5000);
-
-    return () => clearInterval(interval);
   }, [images.length]);
+
+  useEffect(() => {
+    startInterval();
+
+    return () => {
+      if (intervalRef.current) {
+        clearInterval(intervalRef.current);
+      }
+    };
+  }, [startInterval]);
 
   const showSlide = (index: number) => {
     setCurrentSlide(index);
+    startInterval();
   };
 
   const renderSlides = () => {

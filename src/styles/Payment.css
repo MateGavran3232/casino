@@ -1,0 +1,19 @@
+.payContainer {
+  width: 100%;
+  height: 60px;
+  background-color: #2e77c1;
+  margin-top: -2px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+img {
+  width: 140px;
+  height: 40px;
+}
+.payDiv {
+  max-width: 1250px;
+  display: flex;
+  align-items: center;
+  gap: 4rem;
+}
