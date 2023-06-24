@@ -1,10 +1,10 @@
 .navbar {
-  max-width: 1250px;
+  width: 1250px;
   height: 60px;
 
   display: flex;
   align-items: center;
-  gap: 25rem;
+  justify-content: space-between;
 }
 .logo {
   width: 130px;

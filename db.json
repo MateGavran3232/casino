@@ -1,0 +1,45 @@
+{
+  "games": [
+    {
+      "id": 1,
+      "title": "Ramses Book",
+      "image": "https://gamomat.com/wp-content/uploads/2020/05/ramses-book-s.jpg",
+      "description": "The themed game Ramses Book offers a first-class gaming experience. Look out for the mighty Egyptian book, which is wild and unlocks Free Games with a bonus symbol.",
+      "publisher": "Gamomat"
+    },
+    {
+      "id": 2,
+      "title": "Royal Seven XXL",
+      "image": "https://gamomat.com/wp-content/uploads/2020/05/royal-seven-xxl-s.jpg",
+      "description": "This royal fruit game not only impresses with warm colors. It also provides courtly excitement when stacked symbols appear all over the screen. Your Highness will be delighted, as even more paylines provide even more winnings.",
+      "publisher": "Gamomat"
+    },
+    {
+      "id": 3,
+      "title": "Nordic Fire",
+      "image": "https://gamomat.com/wp-content/uploads/2022/09/nordic_fire_s.jpg",
+      "description": "Fight alongside the vikings against the mighty Surt. Winnings in the Free Games can even be higher with instant evaluation of Fire Orbs and additional spins.",
+      "publisher": "Gamomat"
+    },
+    {
+      "id": 4,
+      "title": "20 Flaring Fruits",
+      "image": "https://gamomat.com/wp-content/uploads/2022/03/20_flaring_fruits_s-400x600.jpg",
+      "description": "Get a taste of GAMOMAT’s juicy fruit-themed game, 20 Flaring Fruits. This fresh title from GAMOMAT is bursting with colour and features fantastic Flaring Fruits. The game has a 5×3 layout, 20 paylines and an extra scatter Star-Symbol that can return delicious extra winnings.",
+      "publisher": "Gamomat"
+    },
+    {
+      "id": 5,
+      "title": "50 Flaring Fruits",
+      "image": "https://gamomat.com/wp-content/uploads/2022/04/50_flaring_fruits_s-400x600.jpg",
+      "description": "Get a taste of GAMOMAT's juicy fruit-themed game, 50 Flaring Fruits. This fresh title from GAMOMAT is bursting with colour and features fantastic Flaring Fruits. The game has a 5x4 layout, 50 paylines and an extra scatter Star-Symbol that can return delicious extra winnings.",
+      "publisher": "Gamomat"
+    },
+    {
+      "id": 6,
+      "title": "Crystal Strike",
+      "image": "https://gamomat.com/wp-content/uploads/2020/11/crystal-strike-s-400x600.jpg",
+      "description": "Enter the crystal cave and discover the powerful Energy Spheres. They trigger respins and spread into large Wild blocks to strike extra big wins."
+    }
+  ]
+}

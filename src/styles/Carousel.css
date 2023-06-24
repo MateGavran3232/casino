@@ -18,8 +18,10 @@
 
 .dots-container {
   text-align: center;
-  margin-top: -20px;
-  position: relative;
+  margin-top: -40px;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
   z-index: 2;
 }
 
