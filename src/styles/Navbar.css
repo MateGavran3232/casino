@@ -1,0 +1,59 @@
+.navbar {
+  max-width: 1250px;
+  height: 60px;
+
+  display: flex;
+  align-items: center;
+  gap: 25rem;
+}
+.logo {
+  width: 130px;
+  height: 50px;
+}
+.slotSvg {
+  width: 40px;
+  height: 40px;
+  filter: invert(100%) sepia(0%) saturate(7440%) hue-rotate(15deg)
+    brightness(116%) contrast(114%);
+}
+.allGamesDiv {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.pHover {
+  color: white;
+  font-weight: bold;
+  transition: all 0.15s ease-in;
+}
+.pHover:hover {
+  color: #ffcc00;
+  scale: 1.1;
+  cursor: pointer;
+}
+.registerDiv {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+.regBtn {
+  border: none;
+  cursor: pointer;
+  background-color: #ffcc00;
+  width: 6rem;
+  height: 2.5rem;
+  border-radius: 10px;
+}
+.container {
+  background-color: #132b51;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.leftNav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+}
