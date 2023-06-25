@@ -33,12 +33,10 @@ Follow these steps to get the project up and running on your local machine:
    ```shell
    npm install
 
-4. Start the JSON server:
+4. Start the JSON server at https://localhost:3000:
 
    ```shell
    json-server --watch db.json
-
-   This will start the JSON server and watch the db.json file for changes. The JSON server will be accessible at http://localhost:3000.
 
 5. Start the development server:
 
@@ -56,12 +54,13 @@ The project structure is organized as follows:
 
 - `public`: Contains the public assets such as HTML files and images.
 - `src`: Contains the source code of the project.
-- `components`: Contains reusable React components.
-- `styles`: Contains global styles and Sass files.
+   - `components`: Contains reusable React components.
+   - `styles`: Contains global styles and Sass files.
+   - `data`: Contains fetching and state managment logic.
+   - `hooks`: Contains custom hooks.
+   - `assets`: Contains svg-s and images.
 - `App.tsx`: The entry point of the application.
-- `data`: Contains fetching and state managment logic.
-- `hooks`: Contains custom hooks.
-- `assets`: Contains svg-s and images.
+
 
 ## Customizing the Styles
 
