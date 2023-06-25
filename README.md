@@ -38,7 +38,7 @@ Follow these steps to get the project up and running on your local machine:
    ```shell
    json-server --watch db.json
 
-   
+   This will start the JSON server and watch the db.json file for changes. The JSON server will be accessible at http://localhost:3000.
 
 5. Start the development server:
 
@@ -57,9 +57,11 @@ The project structure is organized as follows:
 - `public`: Contains the public assets such as HTML files and images.
 - `src`: Contains the source code of the project.
 - `components`: Contains reusable React components.
-- `pages`: Contains the main pages of the application.
 - `styles`: Contains global styles and Sass files.
 - `App.tsx`: The entry point of the application.
+- `data`: Contains fetching and state managment logic.
+- `hooks`: Contains custom hooks.
+- `assets`: Contains svg-s and images.
 
 ## Customizing the Styles
 
@@ -69,9 +71,6 @@ The project uses Sass for styling. You can find the Sass files in the `styles` d
 
 The project includes a JSON server to serve the slot game data. The server configuration is located in the `server.json` file. You can modify this file to add or update the data.
 
-## Contributing
-
-Contributions are welcome! If you find any issues or have suggestions for improvements, feel free to open an issue or submit a pull request.
 
 ## License
 
