@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.3](https://github.com/mategavran32/casino/compare/v0.0.2...v0.0.3) (2023-06-25)
+
+
+### Features
+
+* add games , and animation ([18d38a7](https://github.com/mategavran32/casino/commit/18d38a74f259234d4b10ecd6aa62deecab2a59b1))
+
 ### [0.0.2](https://github.com/mategavran32/casino/compare/v0.0.1...v0.0.2) (2023-06-25)
 
 
