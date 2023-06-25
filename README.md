@@ -27,3 +27,19 @@ Follow these steps to get the project up and running on your local machine:
 
    ```shell
    cd casino
+
+3. Install the dependencies:
+
+   ```shell
+   npm install
+
+4. Start the development server:
+
+   ```shell
+   npm run dev
+
+5. To build the project for production:
+
+   ```shell
+   npm run build
+   
