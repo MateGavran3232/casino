@@ -21,7 +21,7 @@ Follow these steps to get the project up and running on your local machine:
 1. Clone the repository:
 
    ```shell
-   git clone https://github.com/your-username/casino-homepage.git
+   git clone https://github.com/mategavran32/casino.git
 
 2. Navigate to the project directory:
 
