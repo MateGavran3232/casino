@@ -1,0 +1,45 @@
+$gamesDiv-width: 1250px;
+$gamesDiv-gap: 1.43rem;
+$scrollbar-width: 10px;
+$scrollbar-track-color: #f1f1f1;
+$scrollbar-thumb-color: #888;
+$scrollbar-thumb-hover-color: #555;
+
+.gamesContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  cursor: grab;
+
+  &:active {
+    cursor: grabbing;
+  }
+
+  .gamesDiv {
+    display: flex;
+    gap: $gamesDiv-gap;
+    width: $gamesDiv-width;
+    align-items: center;
+    justify-content: center;
+    height: 300px;
+    max-width: $gamesDiv-width;
+    overflow: auto;
+
+    &::-webkit-scrollbar {
+      width: $scrollbar-width;
+    }
+
+    &::-webkit-scrollbar-track {
+      background-color: $scrollbar-track-color;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: $scrollbar-thumb-color;
+    }
+
+    &::-webkit-scrollbar-thumb:hover {
+      background-color: $scrollbar-thumb-hover-color;
+    }
+  }
+}

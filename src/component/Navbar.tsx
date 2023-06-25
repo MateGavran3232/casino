@@ -1,6 +1,6 @@
 import Logo from "../assets/logo.png";
 import slotSvg from "../assets/slot-machine-winner-svgrepo-com.svg";
-import "../styles/Navbar.css";
+import "../styles/Navbar.scss";
 import { BiSearchAlt } from "react-icons/bi";
 function Navbar() {
   return (

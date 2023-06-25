@@ -1,4 +1,4 @@
-import "../styles/Payment.css";
+import "../styles/Payment.scss";
 import InfiniteLooper from "./InfiniteLooper";
 function Payment() {
   return (

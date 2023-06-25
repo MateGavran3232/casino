@@ -1,6 +1,6 @@
 import { useData } from "../hooks/useData";
 import { useRef, useState, useEffect } from "react";
-import "../styles/Games.css";
+import "../styles/Games.scss";
 import Game from "./Game";
 
 interface GameData {

@@ -1,23 +1,31 @@
+$primary-color: #2e78c2;
+$payDiv-width: 1250px;
+$payDiv-gap: 4rem;
+$visa-padding-right: 7rem;
+
 .payContainer {
   width: 100%;
   height: 60px;
-  background-color: #2e78c2;
+  background-color: $primary-color;
   margin-top: -2px;
   display: flex;
   justify-content: center;
   align-items: center;
 }
+
 .logo {
   width: 140px;
   height: 40px;
 }
+
 .payDiv {
-  width: 1250px;
+  width: $payDiv-width;
   display: flex;
   align-items: center;
-  gap: 4rem;
+  gap: $payDiv-gap;
   justify-content: space-between;
 }
+
 .visa {
-  padding-right: 7rem;
+  padding-right: $visa-padding-right;
 }

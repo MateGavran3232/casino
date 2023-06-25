@@ -1,4 +1,4 @@
-import "../styles/Carousel.css";
+import "../styles/Carousel.scss";
 import { useState, useEffect, useRef, useCallback } from "react";
 
 interface CarouselProps {
