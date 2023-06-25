@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.2](https://github.com/mategavran32/casino/compare/v0.0.1...v0.0.2) (2023-06-25)
+
+
+### Features
+
+* add sass ([604925c](https://github.com/mategavran32/casino/commit/604925c304de77bb49b5ae9e9120da64aba4457e))
+
 ### 0.0.1 (2023-06-25)
 
 
