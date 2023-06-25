@@ -68,7 +68,7 @@ The project uses Sass for styling. You can find the Sass files in the `styles` d
 
 ## JSON Server
 
-The project includes a JSON server to serve the slot game data. The server configuration is located in the `server.json` file. You can modify this file to add or update the data.
+The project includes a JSON server to serve the slot game data. The server configuration is located in the `db.json` file. You can modify this file to add or update the data.
 
 
 ## License
