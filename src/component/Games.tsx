@@ -12,7 +12,7 @@ interface GameData {
 }
 
 interface GameProps {
-  publisher: string;
+  publisher?: string;
 }
 
 function Games({ publisher }: GameProps) {
@@ -24,11 +24,13 @@ function Games({ publisher }: GameProps) {
 
   const filteredData = useMemo(() => {
     if (Array.isArray(data)) {
+      if (publisher === "Popular") {
+        return data.slice(5, 15);
+      }
       return data.filter((game: GameData) => game.publisher === publisher);
     }
     return [];
   }, [data, publisher]);
-
   const limitedData = useMemo(() => filteredData.slice(0, 12), [filteredData]);
 
   const handleMouseDown = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
@@ -87,9 +89,14 @@ function Games({ publisher }: GameProps) {
         <h2>{publisher} Games</h2>
         <p>Show All {">"}</p>
       </div>
-      <div ref={gamesRef} className="gamesDiv">
+      <div
+        ref={gamesRef}
+        className={publisher !== "Popular" ? "gamesDiv" : "popularDiv"}
+      >
         {limitedData.map((game: GameData) => (
-          <Game key={game.id} data={game} />
+          <div className={`game${game.id}`}>
+            <Game key={game.id} data={game} />
+          </div>
         ))}
       </div>
     </div>

@@ -24,7 +24,7 @@ const Game: React.FC<GameProps> = ({ data }) => {
 
   return (
     <div
-      className="gameContainer"
+      className={`gameContainer gameContainer${data.id}`}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >

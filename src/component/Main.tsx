@@ -1,20 +1,23 @@
 import Carousel from "./Carousel";
 import Games from "./Games";
 import Payment from "./Payment";
-
+import "../styles/Main.scss";
 const images = [
-  "https://images.unsplash.com/photo-1595356700395-6f14b5c1f33f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80",
-  "https://images.unsplash.com/photo-1591019052241-e4d95a5dc3fc?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80",
-  "https://images.unsplash.com/photo-1543373014-cfe4f4bc1cdf?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80",
+  "https://www.novomatic.com/sites/default/files/styles/teaser/public/2021-05/77XzYsIjwxfZ0Kv.jpg?itok=BitsQd-p",
+  "https://www.novomatic.com/sites/default/files/styles/teaser/public/2021-05/KdSwD5Ps5tkC5u8.jpg?itok=CQopEAC_",
+  "https://www.novomatic.com/sites/default/files/styles/teaser/public/2022-11/c7UvatX9i7QB7dd.jpg?itok=L6vm4AM_",
 ];
 
 function Main() {
   return (
     <>
-      <Carousel images={images} />
-      <Payment />
-      <Games publisher="Gamomat" />
-      <Games publisher="Merkur" />
+      <div className="mainContainer">
+        <Carousel images={images} />
+        <Payment />
+        <Games publisher="Gamomat" />
+        <Games publisher="Merkur" />
+        <Games publisher="Popular" />
+      </div>
     </>
   );
 }

@@ -1,10 +1,20 @@
 $gamesDiv-width: 1250px;
 $gamesDiv-gap: 1.43rem;
-$scrollbar-track-color: #f1f1f1;
-$scrollbar-thumb-color: #888;
-$scrollbar-thumb-hover-color: #555;
-
+$scrollbar-track-color: #395f9c;
+$scrollbar-thumb-color: #051835;
+$scrollbar-thumb-hover-color: #041429;
+.popularContainer {
+  color: white;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+}
 .gamesContainer {
+  color: white;
   padding-top: 2rem;
   padding-bottom: 2rem;
   display: flex;
@@ -21,13 +31,67 @@ $scrollbar-thumb-hover-color: #555;
     justify-content: space-between;
   }
 
+  .popularDiv {
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    padding-bottom: 1rem;
+    padding-top: 1rem;
+    padding-right: 1rem;
+    padding-left: 1rem;
+    grid-gap: 1.4rem;
+    max-width: $gamesDiv-width;
+    height: auto;
+    overflow: auto;
+    cursor: grab;
+    scrollbar-width: thin;
+    scrollbar-color: $scrollbar-thumb-color $scrollbar-track-color;
+    .game6 {
+      grid-column: span 2;
+      grid-row: span 2;
+    }
+    .game13 {
+      grid-column: 3 / span 2;
+      grid-row: 3 / span 2;
+    }
+
+    &:active {
+      cursor: grabbing;
+    }
+
+    &::-webkit-scrollbar {
+      width: 0.6rem;
+    }
+
+    &::-webkit-scrollbar-track {
+      background-color: $scrollbar-track-color;
+      border-radius: 0.3rem;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: $scrollbar-thumb-color;
+      border-radius: 0.3rem;
+      width: 100px;
+    }
+
+    &::-webkit-scrollbar-thumb:hover {
+      background-color: $scrollbar-thumb-hover-color;
+    }
+    &:first-child {
+      grid-column: span 2;
+    }
+  }
+  .popularDiv:first-child {
+    border: 10px solid black;
+  }
   .gamesDiv {
+    padding: 1rem;
     display: flex;
+    padding-bottom: 1rem;
     gap: $gamesDiv-gap;
     max-width: $gamesDiv-width;
     align-items: center;
     height: 270px;
-    max-width: $gamesDiv-width;
     overflow: auto;
     cursor: grab;
     scrollbar-width: thin;
@@ -43,12 +107,13 @@ $scrollbar-thumb-hover-color: #555;
 
     &::-webkit-scrollbar-track {
       background-color: $scrollbar-track-color;
+      border-radius: 0.3rem;
     }
 
     &::-webkit-scrollbar-thumb {
       background-color: $scrollbar-thumb-color;
       border-radius: 0.3rem;
-      width: 40%;
+      width: 100px;
     }
 
     &::-webkit-scrollbar-thumb:hover {
