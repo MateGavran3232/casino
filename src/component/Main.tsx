@@ -2,6 +2,7 @@ import Carousel from "./Carousel";
 import Games from "./Games";
 import Payment from "./Payment";
 import "../styles/Main.scss";
+import Publishers from "./Publishers";
 const images = [
   "https://www.novomatic.com/sites/default/files/styles/teaser/public/2021-05/77XzYsIjwxfZ0Kv.jpg?itok=BitsQd-p",
   "https://www.novomatic.com/sites/default/files/styles/teaser/public/2021-05/KdSwD5Ps5tkC5u8.jpg?itok=CQopEAC_",
@@ -17,6 +18,7 @@ function Main() {
         <Games publisher="Gamomat" />
         <Games publisher="Merkur" />
         <Games publisher="Popular" />
+        <Publishers />
       </div>
     </>
   );

@@ -94,7 +94,7 @@ function Games({ publisher }: GameProps) {
         className={publisher !== "Popular" ? "gamesDiv" : "popularDiv"}
       >
         {limitedData.map((game: GameData) => (
-          <div className={`game${game.id}`}>
+          <div className={`game${game.id}`} key={game.id}>
             <Game key={game.id} data={game} />
           </div>
         ))}

@@ -31,7 +31,6 @@ export const DataContextProvider: React.FC<DataContextProviderProps> = ({
     try {
       const response = await fetch("http://localhost:3000/games");
       const data = await response.json();
-      console.log(data);
       setData(data);
     } catch (error) {
       console.error("Error fetching data: ", error);

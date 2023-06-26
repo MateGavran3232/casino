@@ -1,0 +1,38 @@
+$primary-color: #ffcc00;
+
+.publisherContainer {
+  background-color: rgb(36, 151, 189);
+  height: 220px;
+  width: 100%;
+  border-top: 5px solid $primary-color;
+  border-bottom: 5px solid $primary-color;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  .publisherDiv {
+    display: flex;
+    gap: 2rem;
+    max-width: 1250px;
+    overflow: hidden;
+    position: relative;
+    bottom: calc(114px - 85px);
+  }
+  h2 {
+    color: white;
+    left: 0px;
+    top: -40px;
+  }
+  .titleDiv {
+    width: 1250px;
+    position: relative;
+    top: -10px;
+  }
+  .firstImg {
+    padding-left: 4rem;
+  }
+  .lastImg {
+    padding-right: 4rem;
+  }
+}
