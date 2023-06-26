@@ -1,6 +1,6 @@
 # Casino Homepage Project
 
-This is a casino homepage project that showcases various slot games. It is built with Vite, TypeScript, SWC, React, and Sass.
+This is a casino homepage project that showcases various slot games. It is built with Vite, TypeScript, SWC, React, and Scss.
 
 ## Features
 
@@ -55,7 +55,7 @@ The project structure is organized as follows:
 - `public`: Contains the public assets such as HTML files and images.
 - `src`: Contains the source code of the project.
    - `components`: Contains reusable React components.
-   - `styles`: Contains global styles and Sass files.
+   - `styles`: Contains global styles and Scss files.
    - `data`: Contains fetching and state managment logic.
    - `hooks`: Contains custom hooks.
    - `assets`: Contains svg-s and images.
@@ -64,7 +64,7 @@ The project structure is organized as follows:
 
 ## Customizing the Styles
 
-The project uses Sass for styling. You can find the Sass files in the `styles` directory. Modify these files to customize the styles of your casino homepage.
+The project uses Scss for styling. You can find the Scss files in the `styles` directory. Modify these files to customize the styles of your casino homepage.
 
 ## JSON Server
 
