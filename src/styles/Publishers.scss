@@ -14,7 +14,7 @@ $primary-color: #ffcc00;
   .publisherDiv {
     display: flex;
     gap: 2rem;
-    max-width: 1250px;
+    width: 1250px;
     overflow: hidden;
     position: relative;
     bottom: calc(114px - 85px);
@@ -42,5 +42,11 @@ $primary-color: #ffcc00;
 
   .lastImg {
     padding-right: 1.5rem;
+  }
+  @media (max-width: 1250px) {
+    .publisherDiv,
+    .titleDiv {
+      width: 80%;
+    }
   }
 }

@@ -30,3 +30,11 @@ $visa-padding-right: 7rem;
 .visa {
   padding-right: $visa-padding-right;
 }
+@media (max-width: 1250px) {
+  .payDiv {
+    width: 80%;
+  }
+  .visa {
+    padding-right: 2rem;
+  }
+}

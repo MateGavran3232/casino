@@ -45,3 +45,8 @@ $looper-width: 100%;
     transform: translateX(-100%);
   }
 }
+@media (max-width: 768px) {
+  .looper__listInstance {
+    gap: 2rem;
+  }
+}
