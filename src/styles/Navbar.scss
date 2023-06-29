@@ -10,6 +10,59 @@ $secondary-color: #132b51;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  position: relative;
+
+  .searchBarDiv {
+    width: 30%;
+    position: relative;
+
+    .searchBar {
+      z-index: 2;
+      background-color: #ffcc00;
+      position: relative;
+      width: 100%;
+      border: none;
+      border-top-right-radius: 20px;
+      border-top-left-radius: 20px;
+      min-height: 2rem;
+      display: flex;
+      justify-items: center;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+
+      .searchInput {
+        background-color: #ffcc00;
+        border: none;
+        height: 1.5rem;
+        width: 90%;
+        border-radius: 20px;
+
+        &:focus {
+          outline: none;
+        }
+      }
+    }
+
+    .gameResults {
+      z-index: 5;
+      position: absolute;
+      top: 30px;
+
+      padding-top: 10px;
+      padding-bottom: 10px;
+      text-align: center;
+      width: 100%;
+      border-bottom-left-radius: 20px;
+      border-bottom-right-radius: 20px;
+      background-color: #ffcc00;
+      animation: all 1s forwards;
+      .gameItem:hover {
+        background-color: #d3aa07;
+        cursor: pointer;
+      }
+    }
+  }
 
   .logo {
     width: 130px;
@@ -36,7 +89,7 @@ $secondary-color: #132b51;
 
     &:hover {
       color: $primary-color;
-      scale: 1.1;
+      transform: scale(1.1);
       cursor: pointer;
     }
   }

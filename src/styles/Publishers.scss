@@ -19,20 +19,28 @@ $primary-color: #ffcc00;
     position: relative;
     bottom: calc(114px - 85px);
   }
+
   h2 {
     color: white;
-    left: 0px;
+    left: 0;
     top: -40px;
   }
+
+  img {
+    border-radius: 10px;
+  }
+
   .titleDiv {
     width: 1250px;
     position: relative;
     top: -10px;
   }
+
   .firstImg {
-    padding-left: 4rem;
+    padding-left: 1.5rem;
   }
+
   .lastImg {
-    padding-right: 4rem;
+    padding-right: 1.5rem;
   }
 }

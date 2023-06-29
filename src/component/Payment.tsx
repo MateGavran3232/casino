@@ -5,7 +5,7 @@ function Payment() {
     <div>
       <div className="payContainer">
         <div className="payDiv">
-          <InfiniteLooper speed={10} direction="left">
+          <InfiniteLooper speed={10} direction="left" publisher={false}>
             <img
               className="logo"
               loading="lazy"

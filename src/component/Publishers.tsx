@@ -8,60 +8,69 @@ function Publishers() {
         <h2>Our providers</h2>
       </div>
       <div className="publisherDiv">
-        <InfiniteLooper speed={20} direction="left">
+        <InfiniteLooper speed={20} direction="left" publisher={true}>
           <div className="publisherImgDiv firstImg">
             <img
               loading="lazy"
               src="https://solarops.s3.eu-west-1.amazonaws.com/sonnenspiele/images/en/1_merkur.png"
-            ></img>
+              alt=""
+            />
           </div>
           <div className="publisherImgDiv">
             <img
               loading="lazy"
               src="https://solarops.s3.eu-west-1.amazonaws.com/sonnenspiele/images/en/2_greentube.png"
-            ></img>
+              alt=""
+            />
           </div>
           <div className="publisherImgDiv">
             <img
               loading="lazy"
               src="https://solarops.s3.eu-west-1.amazonaws.com/sonnenspiele/images/en/3_amatic.png"
-            ></img>
+              alt=""
+            />
           </div>
           <div className="publisherImgDiv">
             <img
               loading="lazy"
               src="https://solarops.s3.eu-west-1.amazonaws.com/sonnenspiele/images/de/logo_gamomat_farbig.png"
-            ></img>
+              alt=""
+            />
           </div>
           <div className="publisherImgDiv">
             <img
               loading="lazy"
               src="https://solarops.s3.eu-west-1.amazonaws.com/sonnenspiele/images/de/logo_pragmatic-play_grau.png"
-            ></img>
+              alt=""
+            />
           </div>
           <div className="publisherImgDiv">
             <img
               loading="lazy"
               src="https://solarops.s3.eu-west-1.amazonaws.com/sonnenspiele/images/de/logo_oryx-gaming_grau.png"
-            ></img>
+              alt=""
+            />
           </div>
           <div className="publisherImgDiv">
             <img
               loading="lazy"
               src="https://solarops.s3.eu-west-1.amazonaws.com/sonnenspiele/images/de/7_p&s-grey.jpg"
-            ></img>
+              alt=""
+            />
           </div>
           <div className="publisherImgDiv">
             <img
               loading="lazy"
               src="https://solarops.s3.eu-west-1.amazonaws.com/sonnenspiele/images/de/8_relax-grey.jpg"
-            ></img>
+              alt=""
+            />
           </div>
           <div className="publisherImgDiv lastImg">
             <img
               loading="lazy"
               src="https://solarops.s3.eu-west-1.amazonaws.com/sonnenspiele/images/de/9_kalamba-grey.jpg"
-            ></img>
+              alt=""
+            />
           </div>
         </InfiniteLooper>
       </div>

@@ -4,10 +4,12 @@ import "../styles/InfiniteLooper.scss";
 const InfiniteLooper = function InfiniteLooper({
   speed,
   direction,
+  publisher,
   children,
 }: {
   speed: number;
   direction: "right" | "left";
+  publisher: boolean;
   children: React.ReactNode;
 }) {
   const [looperInstances, setLooperInstances] = useState(1);
@@ -57,7 +59,11 @@ const InfiniteLooper = function InfiniteLooper({
           return (
             <div
               key={ind}
-              className="looper__listInstance"
+              className={
+                !publisher
+                  ? "looper__listInstance"
+                  : "looper__publisherInstance"
+              }
               style={{
                 animationDuration: `${speed}s`,
                 animationDirection:
