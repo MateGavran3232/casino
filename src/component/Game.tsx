@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "../styles/Game.scss";
+import { Link } from "react-router-dom";
 
 interface GameProps {
   data: {
@@ -32,7 +33,9 @@ const Game: React.FC<GameProps> = ({ data }) => {
       {hovered && (
         <div className="gameContent">
           <h3 className="gameTitle">{data.title}</h3>
-          <button className="gameButton">Play Now</button>
+          <Link to={`/games/${data.id}`}>
+            <button className="gameButton">Play Now</button>
+          </Link>
         </div>
       )}
     </div>

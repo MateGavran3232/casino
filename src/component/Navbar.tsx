@@ -4,6 +4,7 @@ import slotSvg from "../assets/slot-machine-winner-svgrepo-com.svg";
 import "../styles/Navbar.scss";
 import { BiSearchAlt, BiMenu, BiX } from "react-icons/bi";
 import { useData } from "../hooks/useData";
+import { Link } from "react-router-dom";
 
 interface Game {
   id: number;
@@ -77,10 +78,15 @@ function Navbar(): JSX.Element {
     <div className="container">
       <div className="navbar">
         <div className="leftNav">
-          <img className="logo" src={Logo} alt="Logo" />
+          <Link to={`/`}>
+            <img className="logo" src={Logo} alt="Logo" />
+          </Link>
+
           <div className="allGamesDiv">
             <img className="slotSvg" src={slotSvg} alt="Slot Machine" />
-            <p className="pHover">All Slot Games</p>
+            <Link to={`/allgames`}>
+              <p className="pHover">All Slot Games</p>
+            </Link>
           </div>
         </div>
 
@@ -115,7 +121,7 @@ function Navbar(): JSX.Element {
             <div className="gameResults">
               {filteredGames.map((game: Game) => (
                 <div key={game.id} className="gameItem">
-                  {game.title}
+                  <Link to={`/games/${game.id}`}>{game.title}</Link>
                 </div>
               ))}
             </div>

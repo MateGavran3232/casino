@@ -2,6 +2,7 @@ import { useData } from "../hooks/useData";
 import { useRef, useState, useEffect, useCallback, useMemo } from "react";
 import "../styles/Games.scss";
 import Game from "./Game";
+import { Link } from "react-router-dom";
 
 interface GameData {
   id: number;
@@ -87,7 +88,9 @@ function Games({ publisher }: GameProps) {
     >
       <div className="titleDiv">
         <h2>{publisher} Games</h2>
-        <p>Show All {">"}</p>
+        <Link to={`/allgames`}>
+          <p>Show All {">"}</p>
+        </Link>
       </div>
       <div
         ref={gamesRef}

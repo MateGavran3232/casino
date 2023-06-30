@@ -1,14 +1,22 @@
 import Navbar from "./component/Navbar";
 import "./App.css";
 import Main from "./component/Main";
+import GameDetailes from "./component/GameDetailes";
 import { DataContextProvider } from "./data/dataContext";
-
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import AllGames from "./component/AllGames";
 function App() {
   return (
-    <DataContextProvider>
-      <Navbar />
-      <Main />
-    </DataContextProvider>
+    <BrowserRouter>
+      <DataContextProvider>
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Main />} />
+          <Route path="/games/:id" element={<GameDetailes />} />
+          <Route path="/allgames" element={<AllGames />} />
+        </Routes>
+      </DataContextProvider>
+    </BrowserRouter>
   );
 }
 

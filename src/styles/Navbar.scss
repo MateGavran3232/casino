@@ -37,6 +37,7 @@ $secondary-color: #132b51;
         height: 1.5rem;
         width: 90%;
         border-radius: 20px;
+        color: white;
 
         &:focus {
           outline: none;
@@ -122,7 +123,7 @@ $secondary-color: #132b51;
     align-items: center;
     cursor: pointer;
     display: block;
-
+    padding-right: 1rem;
     .menuIcon {
       color: white;
       transition: all 0.3s ease-in-out;

@@ -1,0 +1,30 @@
+.gameDetailesContainer {
+  background-color: #132b51;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  .gameImg {
+    width: 100%;
+    height: 600px;
+  }
+  .gameDetailesDiv {
+    color: white;
+    background-color: #132b51;
+    height: calc(100vh - 660px);
+    width: 1250px;
+  }
+  @media (max-width: 1250px) {
+    .gameDetailesDiv {
+      width: 80%;
+    }
+  }
+  @media (max-width: 500px) {
+    .gameDetailesDiv {
+      height: 100%;
+    }
+    .gameImg {
+      height: 400px;
+    }
+  }
+}
