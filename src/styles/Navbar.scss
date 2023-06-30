@@ -80,6 +80,9 @@ $secondary-color: #132b51;
     display: flex;
     align-items: center;
     gap: 1rem;
+    @media (max-width: 1250px) {
+      display: none;
+    }
   }
 
   .pHover {
@@ -98,6 +101,10 @@ $secondary-color: #132b51;
     display: flex;
     align-items: center;
     gap: 2rem;
+
+    @media (max-width: 1250px) {
+      display: none;
+    }
   }
 
   .regBtn {
@@ -107,6 +114,59 @@ $secondary-color: #132b51;
     width: 6rem;
     height: 2.5rem;
     border-radius: 10px;
+  }
+
+  .mobileMenu {
+    position: relative;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    display: block;
+
+    .menuIcon {
+      color: white;
+      transition: all 0.3s ease-in-out;
+    }
+
+    &.active {
+      .menuIcon {
+        transform: rotate(180deg);
+      }
+    }
+
+    @media (min-width: 1250px) {
+      display: none;
+    }
+  }
+
+  .mobileMenuContent {
+    background-color: $primary-color;
+    padding: 1rem;
+    z-index: 10;
+    position: fixed;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    @media (min-width: 1250px) {
+      display: none;
+    }
+
+    p {
+      color: white;
+      font-weight: bold;
+      margin: 0.5rem 0;
+      cursor: pointer;
+      transition: all 0.15s ease-in;
+
+      &:hover {
+        color: $secondary-color;
+      }
+    }
   }
 }
 
@@ -123,4 +183,8 @@ $secondary-color: #132b51;
     align-items: center;
     gap: 2rem;
   }
+}
+html.menuOpen,
+body.menuOpen {
+  overflow: hidden;
 }

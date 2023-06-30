@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Logo from "../assets/logo.png";
 import slotSvg from "../assets/slot-machine-winner-svgrepo-com.svg";
 import "../styles/Navbar.scss";
-import { BiSearchAlt } from "react-icons/bi";
+import { BiSearchAlt, BiMenu, BiX } from "react-icons/bi";
 import { useData } from "../hooks/useData";
 
 interface Game {
@@ -18,6 +18,7 @@ function Navbar(): JSX.Element {
   const [filteredGames, setFilteredGames] = useState<Game[]>([]);
   const [isSearchBarVisible, setSearchBarVisible] = useState<boolean>(false);
   const [isResultsVisible, setResultsVisible] = useState<boolean>(false);
+  const [isMobileMenuOpen, setMobileMenuOpen] = useState<boolean>(false);
   const { data } = useData();
 
   const handleSearchInputChange = (
@@ -44,6 +45,33 @@ function Navbar(): JSX.Element {
     setSearchQuery("");
     setResultsVisible(false);
   };
+
+  const handleMobileMenuToggle = (): void => {
+    setMobileMenuOpen((prevState: boolean) => {
+      if (!prevState) {
+        document.body.classList.add("menuOpen");
+        document.documentElement.classList.add("menuOpen");
+      } else {
+        document.body.classList.remove("menuOpen");
+        document.documentElement.classList.remove("menuOpen");
+      }
+      return !prevState;
+    });
+  };
+  useEffect(() => {
+    const handleScroll = (): void => {
+      if (!isMobileMenuOpen) {
+        document.body.classList.remove("menuOpen");
+        document.documentElement.classList.remove("menuOpen");
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [isMobileMenuOpen]);
 
   return (
     <div className="container">
@@ -103,6 +131,37 @@ function Navbar(): JSX.Element {
           />
           <p className="pHover">Log In</p>
           <button className="regBtn">Register</button>
+        </div>
+
+        <div className={`mobileMenu ${isMobileMenuOpen ? "active" : ""}`}>
+          <BiSearchAlt
+            color="white"
+            size="26px"
+            onClick={toggleSearchBar}
+            className="searchIcon"
+          />
+          {isMobileMenuOpen ? (
+            <BiX
+              color="white"
+              size="26px"
+              onClick={handleMobileMenuToggle}
+              className="menuIcon"
+            />
+          ) : (
+            <BiMenu
+              color="white"
+              size="26px"
+              onClick={handleMobileMenuToggle}
+              className="menuIcon"
+            />
+          )}
+
+          {isMobileMenuOpen && (
+            <div className="mobileMenuContent">
+              <p className="pHover">Log In</p>
+              <button className="regBtn">Register</button>
+            </div>
+          )}
         </div>
       </div>
     </div>
