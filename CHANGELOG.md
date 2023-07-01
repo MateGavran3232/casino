@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.4](https://github.com/mategavran32/casino/compare/v0.0.3...v0.0.4) (2023-07-01)
+
+
+### Features
+
+* add allgames,games details ([2dfc883](https://github.com/mategavran32/casino/commit/2dfc8838f39cc7a4ded76578eca87dc7d0d68d9a))
+* add login and register ([561f951](https://github.com/mategavran32/casino/commit/561f9518b3841e14c3261750ebc2b02027386a84))
+* add popular games ([2e04e09](https://github.com/mategavran32/casino/commit/2e04e098b8f34d9868abb28785050d4d0624505e))
+* add publisher comoponent,images,scss ([f9812fa](https://github.com/mategavran32/casino/commit/f9812fa376d6003bcb1e8d52111514e473c86a16))
+* add responsivnes ([d56eba1](https://github.com/mategavran32/casino/commit/d56eba156c75bc0b6d41770d3b1f2683dd2f6b3e))
+* add search bar ([8b472cd](https://github.com/mategavran32/casino/commit/8b472cdefb9df284b004af7e8d15df5ccd6b7333))
+* making navbar respinsive,add hamubger menu ([4ce07f8](https://github.com/mategavran32/casino/commit/4ce07f86e1cc447d829e2ef6a94c468711da8481))
+
 ### [0.0.3](https://github.com/mategavran32/casino/compare/v0.0.2...v0.0.3) (2023-06-25)
 
 
