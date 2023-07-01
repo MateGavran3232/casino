@@ -124,7 +124,11 @@ function Navbar(): JSX.Element {
           {searchQuery && isResultsVisible && (
             <div className="gameResults">
               {filteredGames.map((game: Game) => (
-                <div key={game.id} className="gameItem">
+                <div
+                  key={game.id}
+                  className="gameItem"
+                  onClick={() => setSearchQuery("")}
+                >
                   <Link to={`/games/${game.id}`}>{game.title}</Link>
                 </div>
               ))}
