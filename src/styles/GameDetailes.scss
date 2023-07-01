@@ -21,7 +21,7 @@
   }
   @media (max-width: 500px) {
     .gameDetailesDiv {
-      height: 100%;
+      height: calc(100vh - 460px);
     }
     .gameImg {
       height: 400px;

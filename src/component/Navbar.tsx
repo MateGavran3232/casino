@@ -5,6 +5,8 @@ import "../styles/Navbar.scss";
 import { BiSearchAlt, BiMenu, BiX } from "react-icons/bi";
 import { useData } from "../hooks/useData";
 import { Link } from "react-router-dom";
+import Login from "./Login";
+import Register from "./Register";
 
 interface Game {
   id: number;
@@ -15,6 +17,8 @@ interface Game {
 }
 
 function Navbar(): JSX.Element {
+  const [loginDisplay, setLoginDisplay] = useState<boolean>(false);
+  const [registerDisplay, setRegisterDisplay] = useState<boolean>(false);
   const [searchQuery, setSearchQuery] = useState<string>("");
   const [filteredGames, setFilteredGames] = useState<Game[]>([]);
   const [isSearchBarVisible, setSearchBarVisible] = useState<boolean>(false);
@@ -135,8 +139,17 @@ function Navbar(): JSX.Element {
             onClick={toggleSearchBar}
             className="searchIcon"
           />
-          <p className="pHover">Log In</p>
-          <button className="regBtn">Register</button>
+          <button
+            className="pHover"
+            onClick={() => {
+              setLoginDisplay(true);
+            }}
+          >
+            Log In
+          </button>
+          <button className="regBtn" onClick={() => setRegisterDisplay(true)}>
+            Register
+          </button>
         </div>
 
         <div className={`mobileMenu ${isMobileMenuOpen ? "active" : ""}`}>
@@ -164,12 +177,28 @@ function Navbar(): JSX.Element {
 
           {isMobileMenuOpen && (
             <div className="mobileMenuContent">
-              <p className="pHover">Log In</p>
-              <button className="regBtn">Register</button>
+              <button
+                className="loginBtn"
+                onClick={() => {
+                  setLoginDisplay(true), handleMobileMenuToggle();
+                }}
+              >
+                Log In
+              </button>
+              <button
+                className="regBtn"
+                onClick={() => {
+                  setRegisterDisplay(true), handleMobileMenuToggle();
+                }}
+              >
+                Register
+              </button>
             </div>
           )}
         </div>
       </div>
+      {loginDisplay && <Login setLoginDisplay={setLoginDisplay} />}
+      {registerDisplay && <Register setRegisterDisplay={setRegisterDisplay} />}
     </div>
   );
 }

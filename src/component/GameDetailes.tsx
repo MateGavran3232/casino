@@ -30,7 +30,7 @@ function GameDetailes() {
 
   return (
     <div className="gameDetailesContainer">
-      <img src={gameData.bigImage} className="gameImg" loading="lazy"></img>
+      <img src={gameData.bigImage} className="gameImg"></img>
       <div className="gameDetailesDiv">
         <h1>{gameData.title}</h1>
         <p>{gameData.description}</p>
