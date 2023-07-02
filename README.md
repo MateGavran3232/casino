@@ -52,7 +52,6 @@ Follow these steps to get the project up and running on your local machine:
 
 The project structure is organized as follows:
 
-- `public`: Contains the public assets such as HTML files and images.
 - `src`: Contains the source code of the project.
    - `components`: Contains reusable React components.
    - `styles`: Contains global styles and Scss files.
