@@ -1,82 +1,30 @@
-import React, { useState, useEffect } from "react";
+import { useState } from "react";
+import { BiSearchAlt, BiMenu, BiX } from "react-icons/bi";
+import { Link } from "react-router-dom";
 import Logo from "../assets/logo.png";
 import slotSvg from "../assets/slot-machine-winner-svgrepo-com.svg";
 import "../styles/Navbar.scss";
-import { BiSearchAlt, BiMenu, BiX } from "react-icons/bi";
-import { useData } from "../hooks/useData";
-import { Link } from "react-router-dom";
 import Login from "./Login";
 import Register from "./Register";
-
-interface Game {
-  id: number;
-  title: string;
-  image: string;
-  description: string;
-  publisher: string;
-}
+import SearchBar from "./SearchBar";
 
 function Navbar(): JSX.Element {
-  const [loginDisplay, setLoginDisplay] = useState<boolean>(false);
-  const [registerDisplay, setRegisterDisplay] = useState<boolean>(false);
-  const [searchQuery, setSearchQuery] = useState<string>("");
-  const [filteredGames, setFilteredGames] = useState<Game[]>([]);
-  const [isSearchBarVisible, setSearchBarVisible] = useState<boolean>(false);
-  const [isResultsVisible, setResultsVisible] = useState<boolean>(false);
-  const [isMobileMenuOpen, setMobileMenuOpen] = useState<boolean>(false);
-  const { data } = useData();
-
-  const handleSearchInputChange = (
-    event: React.ChangeEvent<HTMLInputElement>
-  ): void => {
-    const query: string = event.target.value;
-    setSearchQuery(query);
-    searchGames(query);
-    setResultsVisible(query !== "");
-  };
-
-  function searchGames(query: string): void {
-    if (Array.isArray(data)) {
-      const filteredGames: Game[] = data.filter((element: Game) =>
-        element.title.toLowerCase().includes(query.toLowerCase())
-      );
-
-      setFilteredGames(filteredGames);
-    }
-  }
+  const [loginDisplay, setLoginDisplay] = useState(false);
+  const [registerDisplay, setRegisterDisplay] = useState(false);
+  const [isSearchBarVisible, setSearchBarVisible] = useState(false);
+  const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const toggleSearchBar = (): void => {
     setSearchBarVisible((prevState: boolean) => !prevState);
-    setSearchQuery("");
-    setResultsVisible(false);
   };
 
   const handleMobileMenuToggle = (): void => {
     setMobileMenuOpen((prevState: boolean) => {
-      if (!prevState) {
-        document.body.classList.add("menuOpen");
-        document.documentElement.classList.add("menuOpen");
-      } else {
-        document.body.classList.remove("menuOpen");
-        document.documentElement.classList.remove("menuOpen");
-      }
+      document.body.classList.toggle("menuOpen", !prevState);
+      document.documentElement.classList.toggle("menuOpen", !prevState);
       return !prevState;
     });
   };
-  useEffect(() => {
-    const handleScroll = (): void => {
-      if (!isMobileMenuOpen) {
-        document.body.classList.remove("menuOpen");
-        document.documentElement.classList.remove("menuOpen");
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll, { passive: true });
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, [isMobileMenuOpen]);
 
   return (
     <div className="container">
@@ -94,47 +42,7 @@ function Navbar(): JSX.Element {
           </div>
         </div>
 
-        <div className="searchBarDiv">
-          {isSearchBarVisible && (
-            <div
-              className={`searchBar centered-element ${
-                isResultsVisible ? "animate" : ""
-              }`}
-              style={
-                searchQuery !== ""
-                  ? {
-                      borderTopLeftRadius: "20px",
-                      borderTopRightRadius: "20px",
-                    }
-                  : {
-                      borderRadius: "20px",
-                    }
-              }
-            >
-              <input
-                type="text"
-                placeholder="Search"
-                className="searchInput"
-                value={searchQuery}
-                onChange={handleSearchInputChange}
-              />
-            </div>
-          )}
-
-          {searchQuery && isResultsVisible && (
-            <div className="gameResults">
-              {filteredGames.map((game: Game) => (
-                <div
-                  key={game.id}
-                  className="gameItem"
-                  onClick={() => setSearchQuery("")}
-                >
-                  <Link to={`/games/${game.id}`}>{game.title}</Link>
-                </div>
-              ))}
-            </div>
-          )}
-        </div>
+        {isSearchBarVisible && <SearchBar />}
 
         <div className="registerDiv">
           <BiSearchAlt
@@ -142,6 +50,7 @@ function Navbar(): JSX.Element {
             size="26px"
             onClick={toggleSearchBar}
             className="searchIcon"
+            style={{ cursor: "pointer" }}
           />
           <button
             className="pHover"
@@ -184,7 +93,8 @@ function Navbar(): JSX.Element {
               <button
                 className="loginBtn"
                 onClick={() => {
-                  setLoginDisplay(true), handleMobileMenuToggle();
+                  setLoginDisplay(true);
+                  handleMobileMenuToggle();
                 }}
               >
                 Log In
@@ -192,7 +102,8 @@ function Navbar(): JSX.Element {
               <button
                 className="regBtn"
                 onClick={() => {
-                  setRegisterDisplay(true), handleMobileMenuToggle();
+                  setRegisterDisplay(true);
+                  handleMobileMenuToggle();
                 }}
               >
                 Register

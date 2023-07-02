@@ -19,6 +19,7 @@ function Main() {
         <Games publisher="Merkur" />
         <Games publisher="Popular" />
         <Publishers />
+        <Games publisher="Peter & Sons" />
       </div>
     </>
   );

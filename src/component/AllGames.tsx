@@ -13,6 +13,7 @@ function AllGames() {
   const { data } = useData();
   const gamesData = useMemo(() => {
     if (Array.isArray(data)) {
+      console.log(data);
       return data.filter((item) => item.publisher !== "");
     }
     return [];

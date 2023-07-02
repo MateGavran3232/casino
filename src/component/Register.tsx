@@ -11,7 +11,7 @@ function Register({ setRegisterDisplay }: RegisterProp) {
       <div className="loginDiv">
         <div className="loginTitleDiv">
           <button onClick={handleDisplay}>X</button>
-          <h1>Regsiter</h1>
+          <h1>Register</h1>
         </div>
         <div className="inputsDiv">
           <input placeholder="E-Mail Adresse" type="email"></input>
