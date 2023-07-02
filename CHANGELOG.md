@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.5](https://github.com/mategavran32/casino/compare/v0.0.4...v0.0.5) (2023-07-02)
+
+
+### Features
+
+* add footer ([9b03f9c](https://github.com/mategavran32/casino/commit/9b03f9c337cf4dbc6876756e83aa1a84845feeb6))
+* add more games, making code more readble ([031416a](https://github.com/mategavran32/casino/commit/031416a76a08c2a8dea0b8601de34bf06999ffd6))
+
+
+### Bug Fixes
+
+* search bar bug ([defa252](https://github.com/mategavran32/casino/commit/defa252b8f2362ab5c60ebb83da9d66be3caa242))
+
 ### [0.0.4](https://github.com/mategavran32/casino/compare/v0.0.3...v0.0.4) (2023-07-01)
 
 
