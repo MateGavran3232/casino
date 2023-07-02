@@ -1,6 +1,7 @@
 img {
-  max-width: 100%;
-  height: 100%;
+  display: block;
+  width: auto;
+  height: auto;
 }
 a {
   color: white;
@@ -9,4 +10,5 @@ a {
 html,
 body {
   margin: 0;
+  background-color: #132b51;
 }

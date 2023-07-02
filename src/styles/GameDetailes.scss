@@ -18,13 +18,17 @@
     .gameDetailesDiv {
       width: 80%;
     }
+    .gameImg {
+      width: auto;
+      height: auto;
+    }
   }
   @media (max-width: 500px) {
     .gameDetailesDiv {
       min-height: 100vh;
     }
     .gameImg {
-      height: 400px;
+      height: auto;
     }
   }
 }

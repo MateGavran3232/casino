@@ -1,9 +1,21 @@
 import "../styles/Payment.scss";
 import InfiniteLooper from "./InfiniteLooper";
-function Payment() {
+
+interface PaymetProps {
+  footer?: string;
+}
+
+function Payment({ footer }: PaymetProps) {
   return (
     <div>
-      <div className="payContainer">
+      <div
+        className="payContainer"
+        style={
+          footer === "yes"
+            ? { backgroundColor: "#132b51" }
+            : { backgroundColor: "#2e78c2" }
+        }
+      >
         <div className="payDiv">
           <InfiniteLooper speed={10} direction="left" publisher={false}>
             <img

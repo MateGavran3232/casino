@@ -5,6 +5,7 @@ import GameDetailes from "./component/GameDetailes";
 import { DataContextProvider } from "./data/dataContext";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import AllGames from "./component/AllGames";
+import Footer from "./component/Footer";
 function App() {
   return (
     <BrowserRouter>
@@ -15,6 +16,7 @@ function App() {
           <Route path="/games/:id" element={<GameDetailes />} />
           <Route path="/allgames" element={<AllGames />} />
         </Routes>
+        <Footer />
       </DataContextProvider>
     </BrowserRouter>
   );
