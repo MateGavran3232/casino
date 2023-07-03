@@ -36,7 +36,7 @@ Follow these steps to get the project up and running on your local machine:
 4. Start the JSON server at https://localhost:3000:
 
    ```shell
-   json-server --watch db.json
+   npm run server
 
 5. Start the development server:
 
@@ -58,6 +58,9 @@ The project structure is organized as follows:
    - `data`: Contains fetching and state managment logic.
    - `hooks`: Contains custom hooks.
    - `assets`: Contains svg-s and images.
+   - `types`: Contains typescript types.
+   - `pages`: Contains pages.
+   - `constants`: Contains app constants.
 - `App.tsx`: The entry point of the application.
 
 
