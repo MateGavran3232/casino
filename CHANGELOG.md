@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.6](https://github.com/mategavran32/casino/compare/v0.0.5...v0.0.6) (2023-07-03)
+
+
+### Features
+
+* add better files structure,and types folder ([c623e43](https://github.com/mategavran32/casino/commit/c623e43a9ce26420831c12df808eebaf18557e15))
+* add test ([d1475d6](https://github.com/mategavran32/casino/commit/d1475d661615828ef1f60360bda8fa4090a8a469))
+
 ### [0.0.5](https://github.com/mategavran32/casino/compare/v0.0.4...v0.0.5) (2023-07-02)
 
 
