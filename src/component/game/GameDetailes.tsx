@@ -1,23 +1,19 @@
 import { useParams } from "react-router-dom";
-import { useData } from "../hooks/useData";
+import { useData } from "../../hooks/useData";
 import { useState, useEffect } from "react";
-import "../styles/GameDetailes.scss";
-
-interface gameData {
-  bigImage: string;
-  title: string;
-  description: string;
-  publisher: string;
-}
+import "../../styles/GameDetailes.scss";
+import { GameData } from "../../types";
 
 function GameDetailes() {
   const { id } = useParams();
   const { data } = useData();
-  const [gameData, setGameData] = useState<gameData>({
-    bigImage: "",
+  const [gameData, setGameData] = useState<GameData>({
+    id: 0,
     title: "",
+    image: "",
     description: "",
     publisher: "",
+    bigImage: "",
   });
 
   useEffect(() => {

@@ -1,16 +1,7 @@
 import React, { useState } from "react";
-import "../styles/Game.scss";
+import "../../styles/Game.scss";
 import { Link } from "react-router-dom";
-
-interface GameProps {
-  data: {
-    id: number;
-    title: string;
-    image: string;
-    description: string;
-    publisher: string;
-  };
-}
+import { GameProps } from "../../types";
 
 const Game: React.FC<GameProps> = ({ data }) => {
   const [hovered, setHovered] = useState(false);

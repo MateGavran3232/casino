@@ -1,14 +1,7 @@
 import React, { useState, useEffect, useMemo } from "react";
 import { Link } from "react-router-dom";
-import { useData } from "../hooks/useData";
-
-interface Game {
-  id: number;
-  title: string;
-  image: string;
-  description: string;
-  publisher: string;
-}
+import { useData } from "../../hooks/useData";
+import { GameData } from "../../types";
 
 function SearchBar(): JSX.Element {
   const { data } = useData();
@@ -17,7 +10,7 @@ function SearchBar(): JSX.Element {
 
   const filteredGames = useMemo(() => {
     if (Array.isArray(data)) {
-      return data.filter((element: Game) =>
+      return data.filter((element: GameData) =>
         element.title.toLowerCase().includes(searchQuery.toLowerCase())
       );
     }
@@ -67,7 +60,7 @@ function SearchBar(): JSX.Element {
 
       {searchQuery && isResultsVisible && (
         <div className="gameResults">
-          {filteredGames.map((game: Game) => (
+          {filteredGames.map((game: GameData) => (
             <div
               key={game.id}
               className="gameItem"

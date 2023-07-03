@@ -1,5 +1,5 @@
-import "../styles/Payment.scss";
-import InfiniteLooper from "./InfiniteLooper";
+import "../../styles/Payment.scss";
+import InfiniteLooper from "../utils/InfiniteLooper";
 
 interface PaymetProps {
   footer?: string;

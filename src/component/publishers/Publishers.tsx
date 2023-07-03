@@ -1,5 +1,5 @@
-import "../styles/Publishers.scss";
-import InfiniteLooper from "./InfiniteLooper";
+import "../../styles/Publishers.scss";
+import InfiniteLooper from "../utils/InfiniteLooper";
 
 function Publishers() {
   return (

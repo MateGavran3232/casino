@@ -1,5 +1,5 @@
-import "../styles/Footer.scss";
-import Payment from "./Payment";
+import "../../styles/Footer.scss";
+import Payment from "../payment/Payment";
 
 function Footer() {
   const footer = "yes";

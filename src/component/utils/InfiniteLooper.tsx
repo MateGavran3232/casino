@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef, useCallback } from "react";
-import "../styles/InfiniteLooper.scss";
+import "../../styles/InfiniteLooper.scss";
 
 const InfiniteLooper = function InfiniteLooper({
   speed,

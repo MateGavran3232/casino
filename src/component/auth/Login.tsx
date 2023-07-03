@@ -1,29 +1,34 @@
-import "../styles/Login.scss";
-interface RegisterProp {
-  setRegisterDisplay: (value: boolean) => void;
-}
-function Register({ setRegisterDisplay }: RegisterProp) {
+import "../../styles/Login.scss";
+import { LoginProps } from "../../types";
+function Login({ setLoginDisplay }: LoginProps) {
   const handleDisplay = () => {
-    setRegisterDisplay(false);
+    setLoginDisplay(false);
+    console.log(setLoginDisplay);
   };
   return (
     <div className="loginContainer">
       <div className="loginDiv">
         <div className="loginTitleDiv">
           <button onClick={handleDisplay}>X</button>
-          <h1>Register</h1>
+          <h1>Login</h1>
         </div>
         <div className="inputsDiv">
           <input placeholder="E-Mail Adresse" type="email"></input>
           <input placeholder="Password" type="password"></input>
-          <input placeholder="Confirm Password" type="password"></input>
+          <div className="checkboxDiv">
+            <input type="checkbox"></input>
+            <p>Remember password</p>
+          </div>
+
+          <p>Forgot Password?</p>
         </div>
         <div className="buttonsDiv">
           <button className="regButton">Register</button>
+          <button className="loginButton">Login</button>
         </div>
       </div>
     </div>
   );
 }
 
-export default Register;
+export default Login;

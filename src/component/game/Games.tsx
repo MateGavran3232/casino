@@ -1,16 +1,9 @@
-import { useData } from "../hooks/useData";
+import { useData } from "../../hooks/useData";
 import { useRef, useState, useEffect, useCallback, useMemo } from "react";
-import "../styles/Games.scss";
+import "../../styles/Games.scss";
 import Game from "./Game";
 import { Link } from "react-router-dom";
-
-interface GameData {
-  id: number;
-  title: string;
-  image: string;
-  description: string;
-  publisher: string;
-}
+import { GameData } from "../../types";
 
 interface GameProps {
   publisher?: string;

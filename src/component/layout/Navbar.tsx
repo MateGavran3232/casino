@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { BiSearchAlt, BiMenu, BiX } from "react-icons/bi";
 import { Link } from "react-router-dom";
-import Logo from "../assets/logo.png";
-import slotSvg from "../assets/slot-machine-winner-svgrepo-com.svg";
-import "../styles/Navbar.scss";
-import Login from "./Login";
-import Register from "./Register";
+import Logo from "../../assets/logo.png";
+import slotSvg from "../../assets/slot-machine-winner-svgrepo-com.svg";
+import "../../styles/Navbar.scss";
+import Login from "../auth/Login";
+import Register from "../auth/Register";
 import SearchBar from "./SearchBar";
 
 function Navbar(): JSX.Element {

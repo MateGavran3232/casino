@@ -1,11 +1,11 @@
-import Navbar from "./component/Navbar";
+import Navbar from "./component/layout/Navbar";
 import "./App.css";
-import Main from "./component/Main";
-import GameDetailes from "./component/GameDetailes";
+import Main from "./component/layout/Main";
+import GameDetailes from "./component/game/GameDetailes";
 import { DataContextProvider } from "./data/dataContext";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import AllGames from "./component/AllGames";
-import Footer from "./component/Footer";
+import AllGames from "./pages/AllGames";
+import Footer from "./component/layout/Footer";
 function App() {
   return (
     <BrowserRouter>

@@ -1,14 +1,8 @@
 import { useData } from "../hooks/useData";
 import { useMemo } from "react";
-import Game from "./Game";
+import Game from "../component/game/Game";
 import "../styles/AllGames.scss";
-interface GameData {
-  id: number;
-  title: string;
-  image: string;
-  description: string;
-  publisher: string;
-}
+import { GameData } from "../types";
 function AllGames() {
   const { data } = useData();
   const gamesData = useMemo(() => {
