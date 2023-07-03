@@ -43,7 +43,12 @@ Follow these steps to get the project up and running on your local machine:
    ```shell
    npm run dev
 
-6. To build the project for production:
+6. Run tests:
+
+   ```shell
+   npm test
+
+7. To build the project for production:
 
    ```shell
    npm run build
@@ -61,6 +66,7 @@ The project structure is organized as follows:
    - `types`: Contains typescript types.
    - `pages`: Contains pages.
    - `constants`: Contains app constants.
+   - `tests`: Contains tests.
 - `App.tsx`: The entry point of the application.
 
 
