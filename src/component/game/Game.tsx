@@ -19,6 +19,7 @@ const Game: React.FC<GameProps> = ({ data }) => {
       className={`gameContainer gameContainer${data.id}`}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
+      data-testid="game-container"
     >
       <img loading="lazy" className="gameImg" src={data.image} />
       {hovered && (
