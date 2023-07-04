@@ -17,17 +17,19 @@
   @media (max-width: 1250px) {
     .gameDetailesDiv {
       width: 80%;
+      min-height: 60vh;
     }
     .gameImg {
-      width: auto;
+      width: 100%;
       height: auto;
     }
   }
   @media (max-width: 500px) {
     .gameDetailesDiv {
-      min-height: 100vh;
+      min-height: 60vh;
     }
     .gameImg {
+      width: 100%;
       height: auto;
     }
   }

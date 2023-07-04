@@ -17,6 +17,13 @@ $dot-active-color: #ffcc00;
       height: 420px;
       object-fit: cover;
     }
+    @media (max-width: 1250px) {
+      img {
+        width: 100%;
+        object-fit: cover;
+        height: 420px;
+      }
+    }
   }
 
   .dots-container {
