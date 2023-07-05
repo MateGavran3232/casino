@@ -6,9 +6,11 @@ import { DataContextProvider } from "./data/dataContext";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import AllGames from "./pages/AllGames";
 import Footer from "./component/layout/Footer";
+import ScrollToTopOnRouteChange from "./component/utils/ScrollToTopOnRouteChange";
 function App() {
   return (
     <BrowserRouter>
+      <ScrollToTopOnRouteChange />
       <DataContextProvider>
         <Navbar />
         <Routes>

@@ -1,5 +1,5 @@
 import React, { useRef, useState, useEffect, useCallback } from "react";
-import "../../styles/Games.scss";
+import "../../styles/ScrollableContainer.scss";
 
 interface GamesContainerProps {
   children: React.ReactNode;
@@ -43,6 +43,7 @@ function ScrollableContainer({ children }: GamesContainerProps) {
 
   const handleMouseUp = useCallback(() => {
     if (!isDragging) return;
+    console.log("aa");
     setIsDragging(false);
     enableSmoothScrolling();
   }, [isDragging, enableSmoothScrolling]);
@@ -65,7 +66,7 @@ function ScrollableContainer({ children }: GamesContainerProps) {
   return (
     <div
       ref={gamesRef}
-      className="gamesDiv"
+      className="scrollDiv"
       onMouseDown={handleMouseDown}
       onMouseMove={isDragging ? handleMouseMove : undefined}
       onMouseUp={handleMouseUp}
