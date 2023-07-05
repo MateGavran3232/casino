@@ -1,23 +1,18 @@
-import { useMemo } from "react";
 import { useData } from "../../hooks/useData";
+import { useMemo } from "react";
 import "../../styles/Games.scss";
 import Game from "./Game";
-import { GameData } from "../../types";
-import ScrollableContainer from "../utils/ScrollableContainer";
 import { Link } from "react-router-dom";
-interface GameProps {
-  publisher?: string;
-}
+import { GameData } from "../../types";
 
-function Games({ publisher }: GameProps) {
+function PopularGames() {
   const { data } = useData();
-
   const filteredData = useMemo(() => {
     if (Array.isArray(data)) {
-      return data.filter((game: GameData) => game.publisher === publisher);
+      return data.slice(5, 15);
     }
     return [];
-  }, [data, publisher]);
+  }, [data]);
   const limitedData = useMemo(() => filteredData.slice(0, 12), [filteredData]);
 
   if (!Array.isArray(data)) {
@@ -25,22 +20,21 @@ function Games({ publisher }: GameProps) {
   }
 
   return (
-    <div className="gamesContainer">
+    <div className="popularContainer">
       <div className="titleDiv">
-        <h2>{publisher} Games</h2>
+        <h2>Popular Games</h2>
         <Link to={`/allgames`}>
           <p>Show All {">"}</p>
         </Link>
       </div>
-      <ScrollableContainer>
+      <div className="popularDiv">
         {limitedData.map((game: GameData) => (
           <div className={`game${game.id}`} key={game.id}>
             <Game key={game.id} data={game} />
           </div>
         ))}
-      </ScrollableContainer>
+      </div>
     </div>
   );
 }
-
-export default Games;
+export default PopularGames;

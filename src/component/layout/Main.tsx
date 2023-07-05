@@ -3,6 +3,8 @@ import Games from "../game/Games";
 import Payment from "../payment/Payment";
 import "../../styles/Main.scss";
 import Publishers from "../publishers/Publishers";
+import PopularGames from "../game/PopularGames";
+
 const images = [
   "https://www.novomatic.com/sites/default/files/styles/teaser/public/2021-05/77XzYsIjwxfZ0Kv.jpg?itok=BitsQd-p",
   "https://www.novomatic.com/sites/default/files/styles/teaser/public/2021-05/KdSwD5Ps5tkC5u8.jpg?itok=CQopEAC_",
@@ -17,7 +19,7 @@ function Main() {
         <Payment />
         <Games publisher="Gamomat" />
         <Games publisher="Merkur" />
-        <Games publisher="Popular" />
+        <PopularGames />
         <Publishers />
         <Games publisher="Peter & Sons" />
       </div>
