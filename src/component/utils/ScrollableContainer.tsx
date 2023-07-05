@@ -31,7 +31,6 @@ function ScrollableContainer({ children }: GamesContainerProps) {
 
   const handleMouseMove = useCallback(
     (e: React.MouseEvent<HTMLDivElement>) => {
-      if (!isDragging) return;
       e.preventDefault();
       const x = e.clientX - (gamesRef.current?.offsetLeft ?? 0);
       const walk = (x - startX) * 1.2;
@@ -39,7 +38,7 @@ function ScrollableContainer({ children }: GamesContainerProps) {
         gamesRef.current.scrollLeft = scrollLeft - walk;
       }
     },
-    [isDragging, startX, scrollLeft]
+    [startX, scrollLeft]
   );
 
   const handleMouseUp = useCallback(() => {
@@ -65,15 +64,14 @@ function ScrollableContainer({ children }: GamesContainerProps) {
 
   return (
     <div
-      className="gamesContainer"
+      ref={gamesRef}
+      className="gamesDiv"
       onMouseDown={handleMouseDown}
-      onMouseMove={handleMouseMove}
+      onMouseMove={isDragging ? handleMouseMove : undefined}
       onMouseUp={handleMouseUp}
       onMouseLeave={handleMouseUp}
     >
-      <div ref={gamesRef} className="gamesDiv">
-        {children}
-      </div>
+      {children}
     </div>
   );
 }
