@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.7](https://github.com/mategavran32/casino/compare/v0.0.6...v0.0.7) (2023-07-06)
+
+
+### Features
+
+* add go to top on route change ([fe25bf7](https://github.com/mategavran32/casino/commit/fe25bf7152dc88754495f66068b2c3256391b692))
+* scrolling logic seperated, add popular games component ([46daac3](https://github.com/mategavran32/casino/commit/46daac31cb9b7c480b33f02a792209eb1212c8b8))
+
+
+### Bug Fixes
+
+* drag bug ([77edd5c](https://github.com/mategavran32/casino/commit/77edd5cefd1992f9267923bca5da6e7f6a163855))
+* mouse move re renders ([6e8ed4b](https://github.com/mategavran32/casino/commit/6e8ed4b89bf43d2930c108a7794e8e3d7a883e75))
+* responsive images ([9ab3c95](https://github.com/mategavran32/casino/commit/9ab3c956e70573629e56fd1a02d77ef125685351))
+
 ### [0.0.6](https://github.com/mategavran32/casino/compare/v0.0.5...v0.0.6) (2023-07-03)
 
 
