@@ -28,10 +28,10 @@ function ScrollableContainer({ children }: GamesContainerProps) {
     },
     [disableSmoothScrolling]
   );
-
   const handleMouseMove = useCallback(
     (e: React.MouseEvent<HTMLDivElement>) => {
       e.preventDefault();
+
       const x = e.clientX - (gamesRef.current?.offsetLeft ?? 0);
       const walk = (x - startX) * 1.2;
       if (gamesRef.current) {
@@ -43,7 +43,7 @@ function ScrollableContainer({ children }: GamesContainerProps) {
 
   const handleMouseUp = useCallback(() => {
     if (!isDragging) return;
-    console.log("aa");
+
     setIsDragging(false);
     enableSmoothScrolling();
   }, [isDragging, enableSmoothScrolling]);

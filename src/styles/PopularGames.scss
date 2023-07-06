@@ -1,0 +1,78 @@
+@import "variables";
+
+.popularContainer {
+  color: white;
+  padding: 2rem 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+
+  .titleDiv {
+    width: $gamesDiv-width;
+    height: 50px;
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+  }
+
+  .popularDiv {
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    padding: 1rem;
+    grid-gap: 1.4rem;
+    width: $gamesDiv-width;
+    height: auto;
+    overflow: auto;
+    cursor: pointer;
+    scrollbar-width: thin;
+    scrollbar-color: $scrollbar-thumb-color $scrollbar-track-color;
+
+    .game6 {
+      grid-column: span 2;
+      grid-row: span 2;
+    }
+
+    .game13 {
+      grid-column: 3 / span 2;
+      grid-row: 3 / span 2;
+    }
+  }
+
+  @media (max-width: 1250px) {
+    .titleDiv {
+      width: 80%;
+    }
+    .popularDiv {
+      width: 80%;
+      grid-template-columns: repeat(2, 1fr);
+      .game6 {
+        grid-column: auto;
+        grid-row: auto;
+      }
+      .game13 {
+        grid-column: auto;
+        grid-row: auto;
+      }
+    }
+  }
+  @media (max-width: 500px) {
+    .titleDiv {
+      width: 80%;
+    }
+    .popularDiv {
+      width: 80%;
+      grid-template-columns: 1fr;
+      .game6 {
+        grid-column: auto;
+        grid-row: auto;
+      }
+      .game13 {
+        grid-column: auto;
+        grid-row: auto;
+      }
+    }
+  }
+}

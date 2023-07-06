@@ -1,6 +1,6 @@
 import { useData } from "../../hooks/useData";
 import { useMemo } from "react";
-import "../../styles/Games.scss";
+import "../../styles/PopularGames.scss";
 import Game from "./Game";
 import { Link } from "react-router-dom";
 import { GameData } from "../../types";

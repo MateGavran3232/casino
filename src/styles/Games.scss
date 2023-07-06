@@ -1,10 +1,5 @@
-$gamesDiv-width: 1250px;
-$gamesDiv-gap: 1.43rem;
-$scrollbar-track-color: #395f9c;
-$scrollbar-thumb-color: #051835;
-$scrollbar-thumb-hover-color: #041429;
+@import "variables";
 
-.popularContainer,
 .gamesContainer {
   color: white;
   padding: 2rem 0;
@@ -22,111 +17,12 @@ $scrollbar-thumb-hover-color: #041429;
     justify-content: space-between;
   }
 
-  .popularDiv {
-    overflow: hidden;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    padding: 1rem;
-    grid-gap: 1.4rem;
-    width: $gamesDiv-width;
-    height: auto;
-    overflow: auto;
-    cursor: pointer;
-    scrollbar-width: thin;
-    scrollbar-color: $scrollbar-thumb-color $scrollbar-track-color;
-
-    .game6 {
-      grid-column: span 2;
-      grid-row: span 2;
-    }
-
-    .game13 {
-      grid-column: 3 / span 2;
-      grid-row: 3 / span 2;
-    }
-
-    &:active {
-      cursor: grabbing;
-    }
-
-    &::-webkit-scrollbar {
-      width: 0.6rem;
-    }
-
-    &::-webkit-scrollbar-track {
-      background-color: $scrollbar-track-color;
-      border-radius: 0.3rem;
-    }
-
-    &::-webkit-scrollbar-thumb {
-      background-color: $scrollbar-thumb-color;
-      border-radius: 0.3rem;
-      width: 100px;
-    }
-
-    &::-webkit-scrollbar-thumb:hover {
-      background-color: $scrollbar-thumb-hover-color;
-    }
-
-    &:first-child {
-      grid-column: span 2;
-    }
-  }
-
-  .gamesDiv {
-    padding: 1rem;
-    display: flex;
-    gap: $gamesDiv-gap;
-    max-width: $gamesDiv-width;
-    align-items: center;
-    height: 270px;
-    overflow: auto;
-    cursor: pointer;
-    scrollbar-width: thin;
-    scrollbar-color: $scrollbar-thumb-color $scrollbar-track-color;
-
-    &:active {
-      cursor: grabbing;
-    }
-
-    &::-webkit-scrollbar {
-      width: 0.6rem;
-    }
-
-    &::-webkit-scrollbar-track {
-      background-color: $scrollbar-track-color;
-      border-radius: 0.3rem;
-    }
-
-    &::-webkit-scrollbar-thumb {
-      background-color: $scrollbar-thumb-color;
-      border-radius: 0.3rem;
-      width: 100px;
-    }
-
-    &::-webkit-scrollbar-thumb:hover {
-      background-color: $scrollbar-thumb-hover-color;
-    }
-  }
-
   @media (max-width: 1250px) {
     .titleDiv {
       width: 80%;
     }
     .gamesDiv {
       width: 80%;
-    }
-    .popularDiv {
-      width: 80%;
-      grid-template-columns: repeat(2, 1fr);
-      .game6 {
-        grid-column: auto;
-        grid-row: auto;
-      }
-      .game13 {
-        grid-column: auto;
-        grid-row: auto;
-      }
     }
   }
   @media (max-width: 500px) {
@@ -135,18 +31,6 @@ $scrollbar-thumb-hover-color: #041429;
     }
     .gamesDiv {
       width: 80%;
-    }
-    .popularDiv {
-      width: 80%;
-      grid-template-columns: 1fr;
-      .game6 {
-        grid-column: auto;
-        grid-row: auto;
-      }
-      .game13 {
-        grid-column: auto;
-        grid-row: auto;
-      }
     }
   }
 }
