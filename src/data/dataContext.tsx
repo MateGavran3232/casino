@@ -17,9 +17,9 @@ export const DataContextProvider: React.FC<DataContextProviderProps> = ({
 
   const dataFetch = useCallback(async () => {
     try {
-      const response = await fetch(`${API_URL}games`);
+      const response = await fetch(`${API_URL}`);
       const data = await response.json();
-      setData(data);
+      setData(data.games);
     } catch (error) {
       console.error("Error fetching data: ", error);
     }
