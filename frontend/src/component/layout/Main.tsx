@@ -14,12 +14,12 @@ const images = [
 ];
 
 function Main() {
-  const { fetchGames } = useDataStore((state) => ({
-    fetchGames: state.fetchGames,
+  const { fetchData } = useDataStore((state) => ({
+    fetchData: state.fetchData,
   }));
   useEffect(() => {
-    fetchGames();
-  }, [fetchGames]);
+    fetchData.games();
+  }, [fetchData.games]);
   return (
     <>
       <div className="mainContainer">

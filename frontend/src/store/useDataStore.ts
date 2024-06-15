@@ -1,44 +1,82 @@
 import axios from "axios";
 import { create } from "zustand";
 import { API_URL } from "../constants/appConstants";
+import { GameData } from "../types";
 
 interface DataState {
-  data: any;
-  singleGame: any;
-  searchData: any;
+  data: GameData[] | [];
+  singleGame: GameData | {};
+  searchData: GameData[] | [];
+  isLoggedIn: boolean;
+  fetchData: {
+    games: () => Promise<void>;
+    singleGame: (id: string) => Promise<void>;
+    search: (searchQuery: string) => Promise<void>;
+  };
+  handleLogin: ({
+    username,
+    password,
+  }: {
+    username: string;
+    password: string;
+  }) => Promise<void>;
+  handleLogout: () => void;
   resetSingleGame: () => void;
-  fetchGames: () => Promise<void>;
-  fetchSingleGame: (id: string) => Promise<void>;
-  fetchSearch: (searchQuery: string) => Promise<void>;
 }
 
 const useDataStore = create<DataState>((set) => ({
   data: [],
+  isLoggedIn: false,
   singleGame: {},
   searchData: [],
-  fetchGames: async () => {
+  fetchData: {
+    games: async () => {
+      try {
+        const response = await axios.get(`${API_URL}/games`);
+        set({ data: response.data });
+      } catch (error) {
+        console.error("Error fetching games:", error);
+      }
+    },
+    singleGame: async (id: string) => {
+      try {
+        const response = await axios.get(`${API_URL}/games/${id}`);
+        set({ singleGame: response.data });
+      } catch (error) {
+        console.error(`Error fetching single game with ID ${id}:`, error);
+      }
+    },
+    search: async (searchQuery: string) => {
+      try {
+        const response = await axios.get(
+          `${API_URL}/games?search=${searchQuery}`
+        );
+        set({ searchData: response.data });
+      } catch (error) {
+        console.error(
+          `Error searching games with query "${searchQuery}":`,
+          error
+        );
+      }
+    },
+  },
+  handleLogin: async ({ username, password }) => {
     try {
-      const response = await axios.get(API_URL);
-      set({ data: response.data });
-    } catch (e) {
-      console.error(e);
+      const response = await axios.post(`${API_URL}/users`, {
+        username,
+        password,
+      });
+      if (response.data !== "OK") {
+        set({ isLoggedIn: false });
+      } else {
+        set({ isLoggedIn: true });
+      }
+    } catch (error) {
+      console.error("Error logging in:", error);
     }
   },
-  fetchSingleGame: async (id: string) => {
-    try {
-      const response = await axios.get(`${API_URL}/${id}`);
-      set({ singleGame: response.data });
-    } catch (e) {
-      console.error(e);
-    }
-  },
-  fetchSearch: async (searchQuery: string) => {
-    try{
-      const response = await axios.get(`${API_URL}?search=${searchQuery}`)
-      set({searchData: response.data})
-    } catch (e) {
-      console.error(e)
-    }
+  handleLogout: () => {
+    set({ isLoggedIn: false });
   },
   resetSingleGame: () => {
     set({ singleGame: {} });

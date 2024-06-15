@@ -19,14 +19,6 @@ function Navbar(): JSX.Element {
     setSearchBarVisible((prevState: boolean) => !prevState);
   };
 
-  const handleMobileMenuToggle = (): void => {
-    setMobileMenuOpen((prevState: boolean) => {
-      document.body.classList.toggle("menuOpen", !prevState);
-      document.documentElement.classList.toggle("menuOpen", !prevState);
-      return !prevState;
-    });
-  };
-
   return (
     <div className="container">
       <div className="navbar">
@@ -73,44 +65,25 @@ function Navbar(): JSX.Element {
             onClick={toggleSearchBar}
             className="searchIcon"
           />
-          {isMobileMenuOpen ? (
-            <BiX
-              color="white"
-              size="26px"
-              onClick={handleMobileMenuToggle}
-              className="menuIcon"
-            />
-          ) : (
-            <BiMenu
-              color="white"
-              size="26px"
-              onClick={handleMobileMenuToggle}
-              className="menuIcon"
-            />
-          )}
 
-          {isMobileMenuOpen && (
-            <div className="mobileMenuContent">
-              <button
-                className="loginBtn"
-                onClick={() => {
-                  setLoginDisplay(true);
-                  handleMobileMenuToggle();
-                }}
-              >
-                Log In
-              </button>
-              <button
-                className="regBtn"
-                onClick={() => {
-                  setRegisterDisplay(true);
-                  handleMobileMenuToggle();
-                }}
-              >
-                Register
-              </button>
-            </div>
-          )}
+          <div className="mobileMenuContent">
+            <button
+              className="loginBtn"
+              onClick={() => {
+                setLoginDisplay(true);
+              }}
+            >
+              Log In
+            </button>
+            <button
+              className="regBtn"
+              onClick={() => {
+                setRegisterDisplay(true);
+              }}
+            >
+              Register
+            </button>
+          </div>
         </div>
       </div>
       {loginDisplay && <Login setLoginDisplay={setLoginDisplay} />}

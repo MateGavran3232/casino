@@ -6,20 +6,18 @@ import React from "react";
 
 function GameDetailes() {
   const { id } = useParams();
-  const { singleGame, fetchSingleGame, resetSingleGame } = useDataStore(
-    (state) => ({
-      singleGame: state.singleGame,
-      fetchSingleGame: state.fetchSingleGame,
-      resetSingleGame: state.resetSingleGame,
-    })
-  );
+  const { singleGame, fetchData, resetSingleGame } = useDataStore((state) => ({
+    singleGame: state.singleGame,
+    fetchData: state.fetchData,
+    resetSingleGame: state.resetSingleGame,
+  }));
 
   useEffect(() => {
-    if (id) fetchSingleGame(id);
+    if (id) fetchData.singleGame(id);
     return () => {
       resetSingleGame();
     };
-  }, [id, fetchSingleGame, resetSingleGame]);
+  }, [id, fetchData.singleGame, resetSingleGame]);
 
   const [gameData] = Array.isArray(singleGame) ? singleGame : [{}];
   return (

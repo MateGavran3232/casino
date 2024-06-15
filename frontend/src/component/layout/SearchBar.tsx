@@ -4,9 +4,9 @@ import { GameData } from "../../types";
 import useDataStore from "../../store/useDataStore";
 
 function SearchBar(): JSX.Element {
-  const { searchData, fetchSearch } = useDataStore((state) => ({
+  const { searchData, fetchData } = useDataStore((state) => ({
     searchData: state.searchData,
-    fetchSearch: state.fetchSearch,
+    fetchData: state.fetchData,
   }));
 
   const [searchQuery, setSearchQuery] = useState("");
@@ -21,13 +21,13 @@ function SearchBar(): JSX.Element {
 
   useEffect(() => {
     const debounceTimer = setTimeout(() => {
-      fetchSearch(searchQuery);
+      fetchData.search(searchQuery);
       setResultsVisible(searchQuery !== "");
     }, 300);
     return () => {
       clearTimeout(debounceTimer);
     };
-  }, [searchQuery, fetchSearch]);
+  }, [searchQuery, fetchData.search]);
 
   return (
     <div className="searchBarDiv">

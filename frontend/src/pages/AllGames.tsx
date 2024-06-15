@@ -5,12 +5,12 @@ import { GameData } from "../types";
 import React from "react";
 import useDataStore from "../store/useDataStore";
 function AllGames() {
-  const { data: gamesData, fetchGames } = useDataStore((state) => ({
+  const { data: gamesData, fetchData } = useDataStore((state) => ({
     data: state.data,
-    fetchGames: state.fetchGames,
+    fetchData: state.fetchData,
   }));
   useEffect(() => {
-    fetchGames();
+    fetchData.games();
   }, []);
   return (
     <div className="allGamesContainer">
