@@ -1,0 +1,14 @@
+img {
+  display: block;
+  width: auto;
+  height: auto;
+}
+a {
+  color: white;
+  text-decoration: none;
+}
+html,
+body {
+  margin: 0;
+  background-color: #132b51;
+}

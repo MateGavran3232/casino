@@ -1,0 +1,40 @@
+$primary-color: #2e78c2;
+$payDiv-width: 1250px;
+$payDiv-gap: 4rem;
+$visa-padding-right: 7rem;
+
+.payContainer {
+  width: 100%;
+  height: 60px;
+  background-color: $primary-color;
+  margin-top: -2px;
+  margin-right: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo {
+  width: 140px;
+  height: 40px;
+}
+
+.payDiv {
+  width: $payDiv-width;
+  display: flex;
+  align-items: center;
+  gap: $payDiv-gap;
+  justify-content: space-between;
+}
+
+.visa {
+  padding-right: $visa-padding-right;
+}
+@media (max-width: 1250px) {
+  .payDiv {
+    width: 80%;
+  }
+  .visa {
+    padding-right: 2rem;
+  }
+}
