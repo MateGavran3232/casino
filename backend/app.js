@@ -1,7 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 const db = require("./db/db");
-
+const bodyParser = require("body-parser");
 const app = express();
 
 app.use(cors());
@@ -11,7 +11,7 @@ app.get("/games", async (req, res) => {
   try {
     const query = !search
       ? "SELECT * FROM games"
-      : `SELECT id,title FROM games WHERE title LIKE '%${search}%';`;
+      : `SELECT * FROM games WHERE title LIKE '%${search}%';`;
     db.query(query, (err, result) => {
       if (err) {
         console.error("Database query error:", err);
@@ -46,6 +46,54 @@ app.get("/games/:id", async (req, res) => {
   } catch (e) {
     console.error("Database connection error:", e);
     res.status(500).send("Error connecting to database.");
+  }
+});
+
+app.post("/login", bodyParser.json(), async (req, res) => {
+  const { username, password } = req.body;
+
+  try {
+    const query = `SELECT * FROM users WHERE username = '${username}' AND password = '${password}'`;
+
+    db.query(query, (err, result) => {
+      if (err) {
+        console.error("Error", err);
+        res.status(500).send("Error");
+        return;
+      }
+      if (result) {
+        res.send(result);
+      } else {
+        res.send("NOT FOUND");
+      }
+    });
+  } catch (e) {
+    console.error(e);
+    res.status(500).send("Error");
+  }
+});
+
+app.post("/register", bodyParser.json(), async (req, res) => {
+  const { username, email, password } = req.body;
+  try {
+    const query = `INSERT INTO users (username,email,password) VALUES ('${username}','${email}','${password}')`;
+
+    db.query(query, (err, result) => {
+      if (err) {
+        console.error("Error", err);
+        res.status(500).send("Errro");
+        return;
+      }
+      if (result) {
+        console.log(result);
+        res.send("OK");
+      } else {
+        res.send("Failed to add user");
+      }
+    });
+  } catch (e) {
+    console.error(e);
+    res.status(500).send("Error");
   }
 });
 
