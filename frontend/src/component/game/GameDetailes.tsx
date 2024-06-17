@@ -9,7 +9,7 @@ function GameDetailes() {
   const { singleGame, fetchData, resetSingleGame } = useDataStore((state) => ({
     singleGame: state.singleGame,
     fetchData: state.fetchData,
-    resetSingleGame: state.resetSingleGame,
+    resetSingleGame: state.actions.resetSingleGame,
   }));
 
   useEffect(() => {

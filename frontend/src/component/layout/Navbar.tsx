@@ -1,19 +1,30 @@
 import { useState } from "react";
-import { BiSearchAlt, BiMenu, BiX } from "react-icons/bi";
+import { BiSearchAlt } from "react-icons/bi";
 import { Link } from "react-router-dom";
+// @ts-ignore
 import Logo from "../../assets/logo.png";
+// @ts-ignore
 import slotSvg from "../../assets/slot-machine-winner-svgrepo-com.svg";
 import "../../styles/Navbar.scss";
 import Login from "../auth/Login";
 import Register from "../auth/Register";
 import SearchBar from "./SearchBar";
 import React from "react";
+import useDataStore from "../../store/useDataStore";
 
 function Navbar(): JSX.Element {
-  const [loginDisplay, setLoginDisplay] = useState(false);
-  const [registerDisplay, setRegisterDisplay] = useState(false);
+  const { isLoginOpen, isRegisterOpen, setIsLoginOpen, setIsRegisterOpen } =
+    useDataStore((state) => ({
+      isLoginOpen: state.isLoginOpen,
+      isRegisterOpen: state.isRegisterOpen,
+      setIsLoginOpen: state.actions.setIsLoginOpen,
+      setIsRegisterOpen: state.actions.setIsRegisterOpen,
+    }));
   const [isSearchBarVisible, setSearchBarVisible] = useState(false);
-  const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const { user, handleLogout } = useDataStore((state) => ({
+    user: state.user,
+    handleLogout: state.handleLogout,
+  }));
 
   const toggleSearchBar = (): void => {
     setSearchBarVisible((prevState: boolean) => !prevState);
@@ -37,28 +48,7 @@ function Navbar(): JSX.Element {
 
         {isSearchBarVisible && <SearchBar />}
 
-        <div className="registerDiv">
-          <BiSearchAlt
-            color="white"
-            size="26px"
-            onClick={toggleSearchBar}
-            className="searchIcon"
-            style={{ cursor: "pointer" }}
-          />
-          <button
-            className="pHover"
-            onClick={() => {
-              setLoginDisplay(true);
-            }}
-          >
-            Log In
-          </button>
-          <button className="regBtn" onClick={() => setRegisterDisplay(true)}>
-            Register
-          </button>
-        </div>
-
-        <div className={`mobileMenu ${isMobileMenuOpen ? "active" : ""}`}>
+        <div className="mobileMenu">
           <BiSearchAlt
             color="white"
             size="26px"
@@ -66,28 +56,35 @@ function Navbar(): JSX.Element {
             className="searchIcon"
           />
 
-          <div className="mobileMenuContent">
-            <button
-              className="loginBtn"
-              onClick={() => {
-                setLoginDisplay(true);
-              }}
-            >
-              Log In
-            </button>
-            <button
-              className="regBtn"
-              onClick={() => {
-                setRegisterDisplay(true);
-              }}
-            >
-              Register
-            </button>
-          </div>
+          {!user ? (
+            <div className="mobileMenuContent">
+              <button
+                className="loginBtn"
+                onClick={() => {
+                  setIsLoginOpen(true);
+                }}
+              >
+                Log In
+              </button>
+              <button
+                className="regBtn"
+                onClick={() => {
+                  setIsRegisterOpen(true);
+                }}
+              >
+                Register
+              </button>
+            </div>
+          ) : (
+            <div className="logedIn">
+              <div>{`Hello ${user.username}`}</div>
+              <button onClick={() => handleLogout()}>Log out</button>
+            </div>
+          )}
         </div>
       </div>
-      {loginDisplay && <Login setLoginDisplay={setLoginDisplay} />}
-      {registerDisplay && <Register setRegisterDisplay={setRegisterDisplay} />}
+      {isLoginOpen && <Login />}
+      {isRegisterOpen && <Register />}
     </div>
   );
 }

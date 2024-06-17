@@ -18,9 +18,15 @@ export interface GameProps {
     publisher: string;
   };
 }
-export interface LoginProps {
-  setLoginDisplay: (value: boolean) => void;
-}
 export interface RegisterProp {
   setRegisterDisplay: (value: boolean) => void;
+}
+
+export interface User {
+  created_at: string;
+  email: string;
+  password: string;
+  role: string;
+  user_id: number;
+  username: string;
 }

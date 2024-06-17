@@ -44,9 +44,10 @@
         cursor: pointer;
       }
     }
+
     .inputsDiv {
       width: 100%;
-      height: 200px;
+      height: 125px;
       display: flex;
       align-items: center;
       flex-direction: column;
@@ -81,13 +82,18 @@
         }
       }
     }
+    .regInputsDiv {
+      height: 200px;
+    }
     .buttonsDiv {
       width: 80%;
       display: flex;
       justify-content: space-between;
       gap: 2rem;
+      padding-bottom: 1rem;
       .registerButtonContainer {
         display: flex;
+        color: black;
         gap: 4px;
         .registerButton {
           transition: color 0.25s ease;
@@ -97,7 +103,6 @@
           cursor: pointer;
         }
       }
-      padding-bottom: 1rem;
       .regButton {
         padding: 1rem;
         background-color: white;
@@ -111,10 +116,18 @@
         padding: 1rem;
         background-color: #ffcc00;
         width: 35%;
+        color: black;
         border: none;
         border-radius: 10px;
         cursor: pointer;
         overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .threeDots {
+          width: 80px;
+          height: 1rem;
+        }
       }
     }
   }

@@ -1,13 +1,18 @@
-import axios from "axios";
+import axios, { isCancel } from "axios";
 import { create } from "zustand";
 import { API_URL } from "../constants/appConstants";
-import { GameData } from "../types";
+import { GameData, User } from "../types";
+import { RegisterDataTypes } from "../component/auth/Register";
 
 interface DataState {
   data: GameData[] | [];
   singleGame: GameData | {};
   searchData: GameData[] | [];
-  isLoggedIn: boolean;
+  user: User | null;
+  isLoginOpen: boolean;
+  isRegisterOpen: boolean;
+  isLoggingLoading: boolean;
+  isRegisteringLodaing: boolean;
   fetchData: {
     games: () => Promise<void>;
     singleGame: (id: string) => Promise<void>;
@@ -20,15 +25,25 @@ interface DataState {
     username: string;
     password: string;
   }) => Promise<void>;
+  handleRegister: ({ username, email, password }: RegisterDataTypes) => void;
   handleLogout: () => void;
-  resetSingleGame: () => void;
+  actions: {
+    setIsLoginOpen: (boolean: boolean) => void;
+    setIsRegisterOpen: (boolean: boolean) => void;
+    resetSingleGame: () => void;
+  };
 }
 
-const useDataStore = create<DataState>((set) => ({
+const useDataStore = create<DataState>((set, get) => ({
   data: [],
-  isLoggedIn: false,
   singleGame: {},
   searchData: [],
+  user: null,
+  isLoginOpen: false,
+  isRegisterOpen: false,
+  isLoggingLoading: false,
+  isRegisteringLodaing: false,
+  isCachingPassword: false,
   fetchData: {
     games: async () => {
       try {
@@ -62,24 +77,60 @@ const useDataStore = create<DataState>((set) => ({
   },
   handleLogin: async ({ username, password }) => {
     try {
-      const response = await axios.post(`${API_URL}/users`, {
+      set({ isLoggingLoading: true });
+      const response = await axios.post(`${API_URL}/login`, {
         username,
         password,
       });
-      if (response.data !== "OK") {
-        set({ isLoggedIn: false });
+      if (response.data.length === 0) {
+        set({ user: null });
+        set({ isLoggingLoading: false });
       } else {
-        set({ isLoggedIn: true });
+        const [user] = response.data;
+        set({ isLoggingLoading: false });
+        set({ user: user });
       }
     } catch (error) {
       console.error("Error logging in:", error);
+    } finally {
+      set({ isLoggingLoading: false });
+      set({ isLoginOpen: false });
     }
   },
   handleLogout: () => {
-    set({ isLoggedIn: false });
+    set({ user: null });
   },
-  resetSingleGame: () => {
-    set({ singleGame: {} });
+  handleRegister: async ({ username, email, password }) => {
+    try {
+      set({ isRegisteringLodaing: true });
+      const response = await axios.post(`${API_URL}/register`, {
+        username,
+        email,
+        password,
+      });
+      if (response.data === "OK") {
+        set({ isRegisteringLodaing: false });
+        console.log("User added succesfully :D");
+      } else {
+        set({ isRegisteringLodaing: false });
+        console.log("Failed to add user");
+      }
+    } catch (e) {
+      console.error(e);
+    } finally {
+      set({ isRegisteringLodaing: false });
+    }
+  },
+  actions: {
+    resetSingleGame: () => {
+      set({ singleGame: {} });
+    },
+    setIsLoginOpen: (boolean) => {
+      set({ isLoginOpen: boolean });
+    },
+    setIsRegisterOpen: (boolean) => {
+      set({ isRegisterOpen: boolean });
+    },
   },
 }));
 

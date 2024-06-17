@@ -1,13 +1,21 @@
 {
   "compilerOptions": {
-    "composite": true,
-    "skipLibCheck": true,
+    "target": "ESNext",
     "module": "ESNext",
-    "moduleResolution": "bundler",
-    "allowSyntheticDefaultImports": true,
+    "moduleResolution": "node",
+    "jsx": "react-jsx",
+    "esModuleInterop": true,
+    "strict": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "noEmit": true, // Set to true to check for errors only
+    "declaration": true, // Ensure this is set to true
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "baseUrl": "./",
     "paths": {
       "assets/*": ["src/assets/*"]
     }
   },
-  "include": ["vite.config.ts"]
+  "include": ["src", "src/index.d.ts"]
 }

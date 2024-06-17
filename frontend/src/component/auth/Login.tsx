@@ -1,72 +1,91 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import "../../styles/Login.scss";
-import { LoginProps } from "../../types";
 import useDataStore from "../../store/useDataStore";
-import { Link } from "react-router-dom";
-
+// @ts-ignore
+import ThreeDots from "../../assets/three-dots.svg";
 type LoginDataTypes = {
   username: string;
   password: string;
 };
 
-function Login({ setLoginDisplay }: LoginProps) {
-  const handleDisplay = () => {
-    setLoginDisplay(false);
-  };
+function Login() {
+  const { handleLogin, setIsLoginOpen, setIsRegisterOpen, isLoggingLoading } =
+    useDataStore((state) => ({
+      handleLogin: state.handleLogin,
+      setIsLoginOpen: state.actions.setIsLoginOpen,
+      setIsRegisterOpen: state.actions.setIsRegisterOpen,
+      isLoggingLoading: state.isLoggingLoading,
+    }));
 
+  const [isFormFilled, setIsFormFilled] = useState(false);
   const loginData = useRef<LoginDataTypes>({
     username: "",
     password: "",
   });
-
-  const { handleLogin } = useDataStore((state) => ({
-    handleLogin: state.handleLogin,
-  }));
-
-  const handeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+  console.log(isLoggingLoading);
+  const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     loginData.current = {
       ...loginData.current,
       [e.target.name]: e.target.value,
     };
+    setIsFormFilled(!Object.values(loginData.current).includes(""));
+  };
+
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === "Enter" && isFormFilled) {
+      handleLogin(loginData.current);
+    }
   };
 
   return (
-    <div className="loginContainer">
+    <div
+      className="loginContainer "
+      onKeyDown={(e) => handleKeyDown(e)}
+      tabIndex={0}
+    >
       <div className="loginDiv">
         <div className="loginTitleDiv">
-          <button onClick={handleDisplay}>X</button>
+          <button onClick={() => setIsLoginOpen(false)}>X</button>
           <h1>Login</h1>
         </div>
+        d
         <div className="inputsDiv">
           <input
             placeholder="Username"
             type="username"
             name="username"
-            onChange={handeInput}
+            onChange={handleInput}
           ></input>
           <input
             placeholder="Password"
             type="password"
             name="password"
-            onChange={handeInput}
+            onChange={handleInput}
           ></input>
-          <div className="checkboxDiv">
-            <input type="checkbox"></input>
-            <p>Remember password</p>
-          </div>
-
-          <p>Forgot Password?</p>
         </div>
         <div className="buttonsDiv">
           <div className="registerButtonContainer">
             <p>Dont have an account yet?</p>
-            <p className="registerButton">Register here</p>
+            <p
+              className="registerButton"
+              onClick={() => {
+                setIsLoginOpen(false);
+                setIsRegisterOpen(true);
+              }}
+            >
+              Register here
+            </p>
           </div>
           <button
             className="loginButton"
+            disabled={!isFormFilled}
             onClick={() => handleLogin(loginData.current)}
           >
-            Login
+            {isLoggingLoading ? (
+              <img src={ThreeDots} className="threeDots"></img>
+            ) : (
+              "Sign in"
+            )}
           </button>
         </div>
       </div>
