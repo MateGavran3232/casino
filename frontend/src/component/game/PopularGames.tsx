@@ -5,16 +5,17 @@ import { Link } from "react-router-dom";
 import { GameData } from "../../types";
 import React from "react";
 import useDataStore from "../../store/useDataStore";
+import { link } from "fs";
 
 function PopularGames() {
   const { data } = useDataStore((state) => ({ data: state.data }));
   const filteredData = useMemo(() => {
     if (Array.isArray(data)) {
-      return data.slice(5, 15);
+      return data.slice(6, 15);
     }
     return [];
   }, [data]);
-  const limitedData = useMemo(() => filteredData.slice(0, 12), [filteredData]);
+  const limitedData = useMemo(() => filteredData.slice(0, 5), [filteredData]);
 
   if (!Array.isArray(data)) {
     return <div>Loading</div>;
@@ -29,11 +30,14 @@ function PopularGames() {
         </Link>
       </div>
       <div className="popularDiv">
-        {limitedData.map((game: GameData) => (
-          <div className={`game${game.id}`} key={game.id}>
-            <Game key={game.id} data={game} />
-          </div>
-        ))}
+        {limitedData.map((game: GameData) => {
+          console.log(game.id);
+          return (
+            <div className={`game${game.id}`} key={game.id}>
+              <Game key={game.id} data={game} />
+            </div>
+          );
+        })}
       </div>
     </div>
   );

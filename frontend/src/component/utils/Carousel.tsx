@@ -1,6 +1,7 @@
 import "../../styles/Carousel.scss";
 import { useState, useEffect, useRef, useCallback } from "react";
 import { CarouselProps } from "../../types";
+import React from "react";
 
 const Carousel: React.FC<CarouselProps> = ({ images }) => {
   const [currentSlide, setCurrentSlide] = useState<number>(0);

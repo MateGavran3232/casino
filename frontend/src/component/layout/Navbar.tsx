@@ -34,19 +34,17 @@ function Navbar(): JSX.Element {
     <div className="container">
       <div className="navbar">
         <div className="leftNav">
-          <Link to={`/`}>
-            <img className="logo" src={Logo} alt="Logo" />
-          </Link>
-
           <div className="allGamesDiv">
-            <img className="slotSvg" src={slotSvg} alt="Slot Machine" />
+            <Link to={`/`}>
+              <img className="slotSvg" src={slotSvg} alt="Slot Machine" />
+            </Link>
             <Link to={`/allgames`}>
               <p className="pHover">All Slot Games</p>
             </Link>
           </div>
         </div>
 
-        {isSearchBarVisible && <SearchBar />}
+        <SearchBar isVisible={isSearchBarVisible} />
 
         <div className="mobileMenu">
           <BiSearchAlt
@@ -77,6 +75,7 @@ function Navbar(): JSX.Element {
             </div>
           ) : (
             <div className="logedIn">
+              <div>{`Money: ${user.money}$`}</div>
               <div>{`Hello ${user.username}`}</div>
               <button onClick={() => handleLogout()}>Log out</button>
             </div>

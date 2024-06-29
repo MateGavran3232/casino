@@ -7,7 +7,12 @@ import AllGames from "./pages/AllGames";
 import Footer from "./component/layout/Footer";
 import ScrollToTopOnRouteChange from "./component/utils/ScrollToTopOnRouteChange";
 import React from "react";
+import Toast from "./component/layout/Toast";
+import useDataStore from "./store/useDataStore";
 function App() {
+  const { toasts } = useDataStore((state) => ({
+    toasts: state.toasts,
+  }));
   return (
     <BrowserRouter>
       <ScrollToTopOnRouteChange />
@@ -17,6 +22,14 @@ function App() {
         <Route path="/games/:id" element={<GameDetailes />} />
         <Route path="/allgames" element={<AllGames />} />
       </Routes>
+      {toasts.map((toast) => (
+        <Toast
+          isToastOpen={toast.isToastOpen}
+          toastMessage={toast.toastMessage}
+          toastType={toast.toastType}
+        />
+      ))}
+
       <Footer />
     </BrowserRouter>
   );

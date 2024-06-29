@@ -1,5 +1,5 @@
 .gameDetailesContainer {
-  background-color: #132b51;
+  background-color: #212121;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -10,8 +10,7 @@
   }
   .gameDetailesDiv {
     color: white;
-    background-color: #132b51;
-    height: calc(100vh - 400px);
+    background-color: #212121;
     width: 1250px;
   }
   @media (max-width: 1250px) {

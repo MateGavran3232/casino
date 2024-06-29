@@ -1,3 +1,4 @@
+import React from "react";
 import "../../styles/Publishers.scss";
 import InfiniteLooper from "../utils/InfiniteLooper";
 

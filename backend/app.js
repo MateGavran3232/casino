@@ -85,7 +85,6 @@ app.post("/register", bodyParser.json(), async (req, res) => {
         return;
       }
       if (result) {
-        console.log(result);
         res.send("OK");
       } else {
         res.send("Failed to add user");

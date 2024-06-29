@@ -1,8 +1,9 @@
 import { useParams } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import "../../styles/GameDetailes.scss";
 import useDataStore from "../../store/useDataStore";
 import React from "react";
+import Mines from "./Mines";
 
 function GameDetailes() {
   const { id } = useParams();
@@ -29,11 +30,13 @@ function GameDetailes() {
             alt={gameData.title}
             className="gameImg"
           />
-          <div className="gameDetailesDiv">
+
+          {/* <div className="gameDetailesDiv">
+            <Mines />
             <h1>{gameData.title}</h1>
             <p>{gameData.description}</p>
             <p>Publisher: {gameData.publisher}</p>
-          </div>
+          </div> */}
         </>
       ) : (
         <p>Loading...</p>

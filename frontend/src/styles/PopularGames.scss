@@ -30,7 +30,7 @@
     scrollbar-width: thin;
     scrollbar-color: $scrollbar-thumb-color $scrollbar-track-color;
 
-    .game6 {
+    .game7 {
       grid-column: span 2;
       grid-row: span 2;
     }
@@ -48,7 +48,7 @@
     .popularDiv {
       width: 80%;
       grid-template-columns: repeat(2, 1fr);
-      .game6 {
+      .game7 {
         grid-column: auto;
         grid-row: auto;
       }
@@ -65,7 +65,7 @@
     .popularDiv {
       width: 80%;
       grid-template-columns: 1fr;
-      .game6 {
+      .game7 {
         grid-column: auto;
         grid-row: auto;
       }

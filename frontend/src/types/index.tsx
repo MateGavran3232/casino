@@ -29,4 +29,5 @@ export interface User {
   role: string;
   user_id: number;
   username: string;
+  money: number;
 }

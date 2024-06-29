@@ -13,8 +13,8 @@ function Payment({ footer }: PaymetProps) {
         className="payContainer"
         style={
           footer === "yes"
-            ? { backgroundColor: "#132b51" }
-            : { backgroundColor: "#2e78c2" }
+            ? { backgroundColor: "#212121" }
+            : { backgroundColor: "#0D7377" }
         }
       >
         <div className="payDiv">

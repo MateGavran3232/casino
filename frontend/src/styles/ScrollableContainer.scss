@@ -1,12 +1,13 @@
 $gamesDiv-width: 1250px;
 $gamesDiv-gap: 1.43rem;
-$scrollbar-track-color: #395f9c;
-$scrollbar-thumb-color: #051835;
-$scrollbar-thumb-hover-color: #041429;
+$scrollbar-track-color: #323232;
+$scrollbar-thumb-color: #212121;
+$scrollbar-thumb-hover-color: #0e0d0d;
 
 .scrollDiv {
-  width: 80%;
+  width: 81.5%;
   padding: 1rem;
+  padding-left: 0;
   display: flex;
   gap: $gamesDiv-gap;
   max-width: $gamesDiv-width;
@@ -23,6 +24,7 @@ $scrollbar-thumb-hover-color: #041429;
 
   &::-webkit-scrollbar {
     width: 0.6rem;
+    -webkit-appearance: none;
   }
 
   &::-webkit-scrollbar-track {

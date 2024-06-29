@@ -3,7 +3,11 @@ import { Link } from "react-router-dom";
 import { GameData } from "../../types";
 import useDataStore from "../../store/useDataStore";
 
-function SearchBar(): JSX.Element {
+type SearchBarProps = {
+  isVisible: boolean;
+};
+
+function SearchBar({ isVisible }: SearchBarProps): JSX.Element {
   const { searchData, fetchData } = useDataStore((state) => ({
     searchData: state.searchData,
     fetchData: state.fetchData,
@@ -30,7 +34,13 @@ function SearchBar(): JSX.Element {
   }, [searchQuery, fetchData.search]);
 
   return (
-    <div className="searchBarDiv">
+    <div
+      className="searchBarDiv"
+      style={{
+        translate: isVisible ? "0rem -3rem" : "0rem 0rem",
+        transition: "translate 0.25s linear",
+      }}
+    >
       <div className={`searchBar centered-element `}>
         <input
           type="text"

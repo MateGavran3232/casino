@@ -14,7 +14,9 @@ function Games({ publisher }: GameProps) {
   const { data } = useDataStore((state) => ({ data: state.data }));
   const filteredData = useMemo(() => {
     if (Array.isArray(data)) {
-      return data.filter((game: GameData) => game.publisher === publisher);
+      return data.filter(
+        (game: GameData) => game.publisher === publisher && game.id !== 7
+      );
     }
     return [];
   }, [data, publisher]);

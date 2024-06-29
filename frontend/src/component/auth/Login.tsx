@@ -18,11 +18,12 @@ function Login() {
     }));
 
   const [isFormFilled, setIsFormFilled] = useState(false);
+
   const loginData = useRef<LoginDataTypes>({
     username: "",
     password: "",
   });
-  console.log(isLoggingLoading);
+
   const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     loginData.current = {
       ...loginData.current,
