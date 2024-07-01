@@ -12,6 +12,7 @@
     "declaration": true, // Ensure this is set to true
     "resolveJsonModule": true,
     "isolatedModules": true,
+    "composite": true,
     "baseUrl": "./",
     "paths": {
       "assets/*": ["src/assets/*"]

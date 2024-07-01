@@ -48,8 +48,8 @@ function Mines() {
     setBet(0);
     handleBetLost(money.toString());
   };
-  const handleMineClick = (i, safe) => {
-    const handleMinesArray = mines?.map((item, index) =>
+  const handleMineClick = (i: number, safe: boolean) => {
+    const handleMinesArray = mines?.map((item: any, index: number) =>
       i === index
         ? {
             safe: safe,
@@ -60,11 +60,13 @@ function Mines() {
         : item
     );
     if (!handleMinesArray) return;
-    if (!!handleMinesArray.find((item) => item.backgroundColor === "red")) {
+    if (
+      !!handleMinesArray.find((item: any) => item.backgroundColor === "red")
+    ) {
       handleGameOver();
     }
     const greens = handleMinesArray.filter(
-      (item) => item.backgroundColor === "green"
+      (item: any) => item.backgroundColor === "green"
     );
     let multiplaer = 1.5;
     for (let i = 0; i < greens.length; i++) {
@@ -112,7 +114,7 @@ function Mines() {
         )}
       </div>
       <div className="minesContainer">
-        {mines?.map((item, i) => (
+        {mines?.map((item: any, i: number) => (
           <button
             key={i}
             className={`mine ${item.className}`}
