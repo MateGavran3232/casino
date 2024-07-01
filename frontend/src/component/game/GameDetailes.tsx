@@ -25,18 +25,20 @@ function GameDetailes() {
     <div className="gameDetailesContainer">
       {gameData ? (
         <>
-          <img
-            src={gameData.bigImage}
-            alt={gameData.title}
-            className="gameImg"
-          />
+          {gameData.title !== "Mines" && (
+            <img
+              src={gameData.bigImage}
+              alt={gameData.title}
+              className="gameImg"
+            />
+          )}
 
-          {/* <div className="gameDetailesDiv">
-            <Mines />
+          <div className="gameDetailesDiv">
+            {gameData.id === 36 && <Mines />}
             <h1>{gameData.title}</h1>
             <p>{gameData.description}</p>
             <p>Publisher: {gameData.publisher}</p>
-          </div> */}
+          </div>
         </>
       ) : (
         <p>Loading...</p>

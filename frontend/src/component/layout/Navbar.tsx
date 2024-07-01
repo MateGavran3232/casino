@@ -13,19 +13,26 @@ import React from "react";
 import useDataStore from "../../store/useDataStore";
 
 function Navbar(): JSX.Element {
-  const { isLoginOpen, isRegisterOpen, setIsLoginOpen, setIsRegisterOpen } =
-    useDataStore((state) => ({
-      isLoginOpen: state.isLoginOpen,
-      isRegisterOpen: state.isRegisterOpen,
-      setIsLoginOpen: state.actions.setIsLoginOpen,
-      setIsRegisterOpen: state.actions.setIsRegisterOpen,
-    }));
+  const {
+    isLoginOpen,
+    isRegisterOpen,
+    setIsLoginOpen,
+    setIsRegisterOpen,
+    handleAddMoney,
+  } = useDataStore((state) => ({
+    isLoginOpen: state.isLoginOpen,
+    isRegisterOpen: state.isRegisterOpen,
+    setIsLoginOpen: state.actions.setIsLoginOpen,
+    setIsRegisterOpen: state.actions.setIsRegisterOpen,
+    handleAddMoney: state.actions.handleAddMoney,
+  }));
   const [isSearchBarVisible, setSearchBarVisible] = useState(false);
   const { user, handleLogout } = useDataStore((state) => ({
     user: state.user,
     handleLogout: state.handleLogout,
   }));
-
+  const [isAddMoneyOpen, setIsAddMoneyOpen] = useState(false);
+  const [money, setMoney] = useState(0);
   const toggleSearchBar = (): void => {
     setSearchBarVisible((prevState: boolean) => !prevState);
   };
@@ -75,8 +82,28 @@ function Navbar(): JSX.Element {
             </div>
           ) : (
             <div className="logedIn">
-              <div>{`Money: ${user.money}$`}</div>
-              <div>{`Hello ${user.username}`}</div>
+              <div
+                onClick={() => setIsAddMoneyOpen(!isAddMoneyOpen)}
+              >{`Money: ${user.money}$`}</div>
+              {isAddMoneyOpen && (
+                <div>
+                  <input
+                    placeholder="add money"
+                    onChange={(e) => setMoney(Number(e.target.value))}
+                  ></input>
+                  <button
+                    onClick={() =>
+                      handleAddMoney(
+                        money.toString(),
+                        Number(user.user_id).toString()
+                      )
+                    }
+                  >
+                    Add
+                  </button>
+                </div>
+              )}
+              <div>{`Hello, ${user.username}`}</div>
               <button onClick={() => handleLogout()}>Log out</button>
             </div>
           )}

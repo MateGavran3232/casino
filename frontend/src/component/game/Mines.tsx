@@ -1,12 +1,23 @@
 import React, { useState } from "react";
 import "../../styles/Mines.scss";
+import useDataStore from "../../store/useDataStore";
 
 function Mines() {
   const [mines, setMines] = useState<any>([]);
   const [isGameOver, setIsGameOver] = useState(false);
-  const [money, setMoney] = useState(100);
+  const [money, setMoney] = useState(0);
   const [multi, setMulti] = useState<number>(0);
   const [bet, setBet] = useState(0);
+
+  const { user, handleBetStart, handleBetLost, handleBetWon } = useDataStore(
+    (state) => ({
+      user: state.user,
+      handleBetStart: state.actions.handleBetStart,
+      handleBetLost: state.actions.handleBetLost,
+      handleBetWon: state.actions.handleBetWon,
+    })
+  );
+
   const numberOfMines = 5;
   const createMines = (gridSize: number, numberOfMines: number) => {
     let indexesOfMines: number[] = [];
@@ -23,16 +34,21 @@ function Mines() {
   };
 
   const startGame = () => {
-    createMines(25, numberOfMines);
-    setIsGameOver(false);
-    setMulti(1);
+    if (money > 0) {
+      createMines(25, numberOfMines);
+      setIsGameOver(false);
+      setMulti(1);
+      setBet(money);
+      handleBetStart(Number(user?.user_id).toString(), money.toString());
+    }
   };
   const handleGameOver = () => {
     setIsGameOver(true);
     setMulti(0);
     setBet(0);
+    handleBetLost(money.toString());
   };
-  const handleClick = (i, safe) => {
+  const handleMineClick = (i, safe) => {
     const handleMinesArray = mines?.map((item, index) =>
       i === index
         ? {
@@ -50,34 +66,58 @@ function Mines() {
     const greens = handleMinesArray.filter(
       (item) => item.backgroundColor === "green"
     );
-    let multiplaer = 1.3;
+    let multiplaer = 1.5;
     for (let i = 0; i < greens.length; i++) {
-      multiplaer += 0.3;
+      multiplaer *= 1.25;
     }
     setMulti(Math.round(multiplaer * 100) / 100);
     setMines(handleMinesArray);
   };
 
+  const handleMoney = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setMoney(Number(e.target.value));
+  };
+
+  const handleWin = () => {
+    handleBetWon(
+      (bet * multi).toFixed(2).toString(),
+      Number(user?.user_id)?.toString()
+    );
+    setIsGameOver(true);
+    setMulti(0);
+    setBet(0);
+  };
+  console.log(multi);
   return (
     <div className="mines">
       <div className="minesControls">
-        <button onClick={() => startGame()}>Bet</button>
         <div>
           <p>Bet Amount</p>
           <input
             placeholder="0.000000"
-            onChange={(e) => setBet(Number(e.target.value))}
+            onChange={(e) => handleMoney(e)}
           ></input>
         </div>
-        <button>Collect : {bet * multi}</button>
+        {isGameOver ? (
+          <button
+            onClick={() => startGame()}
+            disabled={money > Number(user?.money)}
+          >
+            Bet
+          </button>
+        ) : (
+          <button onClick={() => handleWin()}>
+            Collect : {(bet * multi).toFixed(2)}
+          </button>
+        )}
       </div>
       <div className="minesContainer">
         {mines?.map((item, i) => (
           <button
             key={i}
             className={`mine ${item.className}`}
-            onClick={() => handleClick(i, item.safe)}
-            disabled={isGameOver}
+            onClick={() => handleMineClick(i, item.safe)}
+            disabled={isGameOver || item.backgroundColor === "green"}
             style={{
               background: item.backgroundColor,
             }}

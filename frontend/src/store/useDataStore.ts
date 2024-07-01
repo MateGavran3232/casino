@@ -1,4 +1,3 @@
-import axios from "axios";
 import { create } from "zustand";
 import { API_URL } from "../constants/appConstants";
 import { GameData, User } from "../types";
@@ -39,6 +38,11 @@ interface DataState {
     setIsRegisterOpen: (boolean: boolean) => void;
     resetSingleGame: () => void;
     openToast: (type: "success" | "error" | "", message: string) => void;
+    handleBetStart: (userId: string, money: string) => void;
+    updateUser: (user_id: string) => Promise<void>;
+    handleBetLost: (money: string) => void;
+    handleBetWon: (money: string, userId: string) => void;
+    handleAddMoney: (money: string, userId: string) => void;
   };
 }
 
@@ -155,6 +159,51 @@ const useDataStore = create<DataState>((set, get) => ({
           });
         }, 500);
       }, 5000);
+    },
+    handleBetStart: async (userId, money) => {
+      const data = await handleFetch({
+        url: `${API_URL}/bet/START`,
+        method: "POST",
+        body: {
+          userId,
+          money,
+        },
+      });
+      if (data === "OK") {
+        get().actions.updateUser(userId);
+      } else {
+        get().actions.openToast("error", "Error placing bet!");
+      }
+    },
+    updateUser: async (user_id: string) => {
+      const data = await handleFetch<User[]>({
+        url: `${API_URL}/user/${user_id}`,
+        method: "GET",
+      });
+      set({ user: data[0] });
+    },
+    handleBetLost: async (money: string) => {
+      const data = await handleFetch({
+        url: `${API_URL}/bet/LOST`,
+        method: "POST",
+        body: { money },
+      });
+    },
+    handleBetWon: async (money: string, userId: string) => {
+      const data = await handleFetch({
+        url: `${API_URL}/bet/WON`,
+        method: "POST",
+        body: { money, userId },
+      });
+      get().actions.updateUser(userId);
+    },
+    handleAddMoney: async (money: string, userId: string) => {
+      const data = await handleFetch({
+        url: `${API_URL}/bet/ADD`,
+        method: "POST",
+        body: { money, userId },
+      });
+      get().actions.updateUser(userId);
     },
   },
 }));

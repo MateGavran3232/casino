@@ -17,9 +17,9 @@ $scrollbar-thumb-hover-color: #4be7e7;
   .searchBarDiv {
     width: 30%;
     position: relative;
-
+    z-index: 100;
     .searchBar {
-      z-index: 2;
+      z-index: 200000000000000;
       position: relative;
       width: 100%;
       .searchInput {
@@ -36,11 +36,12 @@ $scrollbar-thumb-hover-color: #4be7e7;
 
     .gameResults {
       position: relative;
-      z-index: 10;
       padding-top: 10px;
       padding-bottom: 10px;
       text-align: center;
+      z-index: 10000 !important;
       width: 100%;
+      height: 200px;
       background-color: #0d7477;
       border-radius: 20px;
       .gameItem:hover {
