@@ -34,7 +34,7 @@ function Register() {
           <button onClick={() => setIsRegisterOpen(false)}>X</button>
           <h1>Register</h1>
         </div>
-        <div className="inputsDiv regInputsDiv">
+        <form className="inputsDiv regInputsDiv">
           <input
             placeholder="Username"
             type="name"
@@ -54,7 +54,7 @@ function Register() {
             onChange={handleInput}
           ></input>
           <input placeholder="Confirm Password" type="password"></input>
-        </div>
+        </form>
         <div className="buttonsDiv">
           <button
             className="regButton"

@@ -40,7 +40,6 @@ interface DataState {
     openToast: (type: "success" | "error" | "", message: string) => void;
     handleBetStart: (userId: string, money: string) => void;
     updateUser: (user_id: string) => Promise<void>;
-    handleBetLost: (money: string) => void;
     handleBetWon: (money: string, userId: string) => void;
     handleAddMoney: (money: string, userId: string) => void;
   };
@@ -108,7 +107,7 @@ const useDataStore = create<DataState>((set, get) => ({
   },
   handleRegister: async ({ username, email, password }) => {
     set({ isRegisteringLodaing: true });
-    const data = await handleFetch({
+    const data = (await handleFetch({
       url: `${API_URL}/register`,
       method: "POST",
       body: {
@@ -116,8 +115,8 @@ const useDataStore = create<DataState>((set, get) => ({
         email,
         password,
       },
-    });
-    if (data === "OK") {
+    })) as { message: string };
+    if (data.message && data.message === "OK") {
       set({ isRegisteringLodaing: false });
       get().actions.openToast("success", "Your account has been created!");
     } else {
@@ -181,13 +180,6 @@ const useDataStore = create<DataState>((set, get) => ({
         method: "GET",
       });
       set({ user: data[0] });
-    },
-    handleBetLost: async (money: string) => {
-      const data = await handleFetch({
-        url: `${API_URL}/bet/LOST`,
-        method: "POST",
-        body: { money },
-      });
     },
     handleBetWon: async (money: string, userId: string) => {
       const data = await handleFetch({

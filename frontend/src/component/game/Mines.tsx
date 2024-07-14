@@ -9,14 +9,11 @@ function Mines() {
   const [multi, setMulti] = useState<number>(0);
   const [bet, setBet] = useState(0);
 
-  const { user, handleBetStart, handleBetLost, handleBetWon } = useDataStore(
-    (state) => ({
-      user: state.user,
-      handleBetStart: state.actions.handleBetStart,
-      handleBetLost: state.actions.handleBetLost,
-      handleBetWon: state.actions.handleBetWon,
-    })
-  );
+  const { user, handleBetStart, handleBetWon } = useDataStore((state) => ({
+    user: state.user,
+    handleBetStart: state.actions.handleBetStart,
+    handleBetWon: state.actions.handleBetWon,
+  }));
 
   const numberOfMines = 5;
   const createMines = (gridSize: number, numberOfMines: number) => {
@@ -46,7 +43,6 @@ function Mines() {
     setIsGameOver(true);
     setMulti(0);
     setBet(0);
-    handleBetLost(money.toString());
   };
   const handleMineClick = (i: number, safe: boolean) => {
     const handleMinesArray = mines?.map((item: any, index: number) =>
@@ -89,7 +85,6 @@ function Mines() {
     setMulti(0);
     setBet(0);
   };
-  console.log(multi);
   return (
     <div className="mines">
       <div className="minesControls">

@@ -31,7 +31,6 @@ function PopularGames() {
       </div>
       <div className="popularDiv">
         {limitedData.map((game: GameData) => {
-          console.log(game.id);
           return (
             <div className={`game${game.id}`} key={game.id}>
               <Game key={game.id} data={game} />

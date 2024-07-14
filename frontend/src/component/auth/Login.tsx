@@ -44,12 +44,11 @@ function Login() {
       onKeyDown={(e) => handleKeyDown(e)}
       tabIndex={0}
     >
-      <div className="loginDiv">
+      <form className="loginDiv" method="POST">
         <div className="loginTitleDiv">
           <button onClick={() => setIsLoginOpen(false)}>X</button>
           <h1>Login</h1>
         </div>
-        d
         <div className="inputsDiv">
           <input
             placeholder="Username"
@@ -89,7 +88,7 @@ function Login() {
             )}
           </button>
         </div>
-      </div>
+      </form>
     </div>
   );
 }
