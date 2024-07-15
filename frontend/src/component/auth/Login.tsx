@@ -38,6 +38,11 @@ function Login() {
     }
   };
 
+  const handleClick = () => {
+    if (isFormFilled) {
+      handleLogin(loginData.current);
+    }
+  };
   return (
     <div
       className="loginContainer "
@@ -78,8 +83,9 @@ function Login() {
           </div>
           <button
             className="loginButton"
+            type="button"
             disabled={!isFormFilled}
-            onClick={() => handleLogin(loginData.current)}
+            onClick={handleClick}
           >
             {isLoggingLoading ? (
               <img src={ThreeDots} className="threeDots"></img>
