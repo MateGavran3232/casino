@@ -80,26 +80,32 @@ const useDataStore = create<DataState>((set, get) => ({
   },
   handleLogin: async ({ username, password }) => {
     set({ isLoggingLoading: true });
-    const data = await handleFetch<User[]>({
-      url: `${API_URL}/login`,
-      method: "POST",
-      body: {
-        username,
-        password,
-      },
-    });
-    if (data?.length === 0) {
+    try {
+      const data = await handleFetch<User[]>({
+        url: `${API_URL}/login`,
+        method: "POST",
+        body: {
+          username,
+          password,
+        },
+      });
+      if (data?.length === 0) {
+        set({ user: null });
+        set({ isLoggingLoading: false });
+        get().actions.openToast("error", "Error Logging in D:");
+      } else {
+        const [user] = data;
+        set({ isLoggingLoading: false });
+        set({ user: user });
+        get().actions.openToast("success", "Success Logging In :D");
+      }
+      set({ isLoggingLoading: false });
+      set({ isLoginOpen: false });
+    } catch (e) {
       set({ user: null });
       set({ isLoggingLoading: false });
       get().actions.openToast("error", "Error Logging in D:");
-    } else {
-      const [user] = data;
-      set({ isLoggingLoading: false });
-      set({ user: user });
-      get().actions.openToast("success", "Success Logging In :D");
     }
-    set({ isLoggingLoading: false });
-    set({ isLoginOpen: false });
   },
   handleLogout: () => {
     set({ user: null });
@@ -160,15 +166,15 @@ const useDataStore = create<DataState>((set, get) => ({
       }, 5000);
     },
     handleBetStart: async (userId, money) => {
-      const data = await handleFetch({
+      const { message } = (await handleFetch({
         url: `${API_URL}/bet/START`,
         method: "POST",
         body: {
           userId,
           money,
         },
-      });
-      if (data === "OK") {
+      })) as { message: string };
+      if (message === "OK") {
         get().actions.updateUser(userId);
       } else {
         get().actions.openToast("error", "Error placing bet!");

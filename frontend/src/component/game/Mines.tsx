@@ -8,7 +8,7 @@ function Mines() {
   const [money, setMoney] = useState(0);
   const [multi, setMulti] = useState<number>(0);
   const [bet, setBet] = useState(0);
-
+  const [isGamesStarted, setIsGameStarted] = useState(false);
   const { user, handleBetStart, handleBetWon } = useDataStore((state) => ({
     user: state.user,
     handleBetStart: state.actions.handleBetStart,
@@ -34,12 +34,14 @@ function Mines() {
     if (money > 0) {
       createMines(25, numberOfMines);
       setIsGameOver(false);
+      setIsGameStarted(true);
       setMulti(1);
       setBet(money);
       handleBetStart(Number(user?.user_id).toString(), money.toString());
     }
   };
   const handleGameOver = () => {
+    setIsGameStarted(false);
     setIsGameOver(true);
     setMulti(0);
     setBet(0);
@@ -82,6 +84,7 @@ function Mines() {
       Number(user?.user_id)?.toString()
     );
     setIsGameOver(true);
+    setIsGameStarted(false);
     setMulti(0);
     setBet(0);
   };
@@ -95,7 +98,7 @@ function Mines() {
             onChange={(e) => handleMoney(e)}
           ></input>
         </div>
-        {isGameOver ? (
+        {!isGamesStarted ? (
           <button
             onClick={() => startGame()}
             disabled={money > Number(user?.money)}
