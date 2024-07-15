@@ -71,3 +71,14 @@
     }
   }
 }
+
+@media only screen and (max-width: 768px) {
+  .mines {
+    display: flex;
+    flex-direction: column;
+    .minesControls {
+      height: 15rem;
+      width: 90%;
+    }
+  }
+}
