@@ -26,4 +26,38 @@ class GameController extends Controller
         }
         return response()->json($result);
     }
+
+    public function store(Request $request)
+    {
+        $validated = $request->validate([
+            'title' => 'required|string|max:255',
+            'image' => 'required|string',
+            'description' => 'required|string',
+            'publisher' => 'required|string|max:255',
+            'bigImage' => 'required|string',
+        ]);
+
+        $query = "INSERT INTO games (title, image, description, publisher, bigImage) VALUES (?, ?, ?, ?, ?)";
+        DB::insert($query, [
+            $validated['title'],
+            $validated['image'],
+            $validated['description'],
+            $validated['publisher'],
+            $validated['bigImage']
+        ]);
+
+        return response()->json(['message' => 'Game added successfully'], 201);
+    }
+
+    public function destroy($id)
+    {
+        $query = "DELETE FROM games WHERE id = ?";
+        $result = DB::delete($query, [$id]);
+
+        if ($result === 0) {
+            return response()->json(['message' => 'Game not found'], 404);
+        }
+        
+        return response()->json(['message' => 'Game deleted successfully'], 200);
+    }
 }
