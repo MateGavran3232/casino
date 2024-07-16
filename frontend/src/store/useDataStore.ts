@@ -23,6 +23,8 @@ interface DataState {
     games: () => Promise<void>;
     singleGame: (id: string) => Promise<void>;
     search: (searchQuery: string) => Promise<void>;
+    addGame: (game: Omit<GameData, "id">) => Promise<void>;
+    deleteGame: (id: number) => Promise<void>;
   };
   handleLogin: ({
     username,
@@ -76,6 +78,23 @@ const useDataStore = create<DataState>((set, get) => ({
         method: "GET",
       });
       set({ searchData: data });
+    },
+    addGame: async (game) => {
+      const data = await handleFetch<GameData>({
+        url: `${API_URL}/games`,
+        method: "POST",
+        body: game,
+      });
+      set({ data: [...get().data, data] });
+      get().actions.openToast("success", "Game added successfully!");
+    },
+    deleteGame: async (id: number) => {
+      await handleFetch({
+        url: `${API_URL}/games/${id}`,
+        method: "DELETE",
+      });
+      set({ data: get().data.filter((game) => game.id !== id) });
+      get().actions.openToast("success", "Game deleted successfully!");
     },
   },
   handleLogin: async ({ username, password }) => {

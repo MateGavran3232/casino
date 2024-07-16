@@ -17,6 +17,8 @@ export interface GameProps {
     description: string;
     publisher: string;
   };
+  deleteGame?: (index: number) => any;
+  role?: string | undefined;
 }
 export interface RegisterProp {
   setRegisterDisplay: (value: boolean) => void;

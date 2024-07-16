@@ -2,7 +2,7 @@ import axios from "axios";
 
 type handleFetchTypes = {
   url: string;
-  method: "GET" | "POST";
+  method: "GET" | "POST" | "DELETE";
   body?: { [key: string]: string };
 };
 
@@ -17,5 +17,10 @@ export async function handleFetch<T>({
   } else if (method === "POST") {
     const { data } = await axios.post<T>(url, { ...body });
     return data;
-  } else throw new Error();
+  } else if (method === "DELETE") {
+    const { data } = await axios.delete<T>(url);
+    return data;
+  } else {
+    throw new Error("Unsupported method");
+  }
 }

@@ -3,7 +3,7 @@ import "../../styles/Game.scss";
 import { Link, useLocation } from "react-router-dom";
 import { GameProps } from "../../types";
 
-const Game: React.FC<GameProps> = ({ data }) => {
+const Game: React.FC<GameProps> = ({ data, deleteGame, role }) => {
   const [hovered, setHovered] = useState(false);
   const location = useLocation();
 
@@ -24,6 +24,9 @@ const Game: React.FC<GameProps> = ({ data }) => {
       onMouseLeave={handleMouseLeave}
       data-testid="game-container"
     >
+      {role === "admin" && deleteGame && (
+        <button onClick={() => deleteGame(data.id)}>Delete</button>
+      )}
       <img loading="lazy" className="gameImg" src={data.image} />
       {hovered && (
         <div className="gameContent">
