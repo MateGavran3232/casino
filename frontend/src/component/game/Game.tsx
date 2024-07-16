@@ -16,27 +16,29 @@ const Game: React.FC<GameProps> = ({ data, deleteGame, role }) => {
   };
 
   return (
-    <div
-      className={`gameContainer ${
-        location.pathname === "/" ? `gameContainer${data.id}` : ``
-      }`}
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
-      data-testid="game-container"
-    >
+    <>
       {role === "admin" && deleteGame && (
         <button onClick={() => deleteGame(data.id)}>Delete</button>
       )}
-      <img loading="lazy" className="gameImg" src={data.image} />
-      {hovered && (
-        <div className="gameContent">
-          <h3 className="gameTitle">{data.title}</h3>
-          <Link to={`/games/${data.id}`}>
-            <button className="gameButton">Play Now</button>
-          </Link>
-        </div>
-      )}
-    </div>
+      <div
+        className={`gameContainer ${
+          location.pathname === "/" ? `gameContainer${data.id}` : ``
+        }`}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+        data-testid="game-container"
+      >
+        <img loading="lazy" className="gameImg" src={data.image} />
+        {hovered && (
+          <div className="gameContent">
+            <h3 className="gameTitle">{data.title}</h3>
+            <Link to={`/games/${data.id}`}>
+              <button className="gameButton">Play Now</button>
+            </Link>
+          </div>
+        )}
+      </div>
+    </>
   );
 };
 
