@@ -49,6 +49,38 @@ class GameController extends Controller
         return response()->json(['message' => 'Game added successfully'], 201);
     }
 
+    public function update(Request $request, $id)
+    {
+        $validated = $request->validate([
+            'title' => 'sometimes|required|string|max:255',
+            'image' => 'sometimes|required|string',
+            'description' => 'sometimes|required|string',
+            'publisher' => 'sometimes|required|string|max:255',
+            'bigImage' => 'sometimes|required|string',
+        ]);
+
+        $updateData = [];
+        foreach ($validated as $key => $value) {
+            $updateData[] = "$key = ?";
+        }
+
+        if (empty($updateData)) {
+            return response()->json(['message' => 'No data to update'], 400);
+        }
+
+        $query = "UPDATE games SET " . implode(', ', $updateData) . " WHERE id = ?";
+        $bindings = array_values($validated);
+        $bindings[] = $id;
+
+        $result = DB::update($query, $bindings);
+
+        if ($result === 0) {
+            return response()->json(['message' => 'Game not found or no changes made'], 404);
+        }
+
+        return response()->json(['message' => 'Game updated successfully'], 200);
+    }
+
     public function destroy($id)
     {
         $query = "DELETE FROM games WHERE id = ?";
