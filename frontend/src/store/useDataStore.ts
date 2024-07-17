@@ -12,7 +12,7 @@ interface DataState {
   isLoginOpen: boolean;
   isRegisterOpen: boolean;
   isLoggingLoading: boolean;
-  isRegisteringLodaing: boolean;
+  isRegisteringLoading: boolean;
   toasts: {
     id: number;
     toastType: "success" | "error" | "";
@@ -25,6 +25,10 @@ interface DataState {
     search: (searchQuery: string) => Promise<void>;
     addGame: (game: Omit<GameData, "id">) => Promise<void>;
     deleteGame: (id: number) => Promise<void>;
+    updateGame: (
+      id: number,
+      game: Partial<Omit<GameData, "id">>
+    ) => Promise<void>;
   };
   handleLogin: ({
     username,
@@ -36,8 +40,8 @@ interface DataState {
   handleRegister: ({ username, email, password }: RegisterDataTypes) => void;
   handleLogout: () => void;
   actions: {
-    setIsLoginOpen: (boolean: boolean) => void;
-    setIsRegisterOpen: (boolean: boolean) => void;
+    setIsLoginOpen: (isOpen: boolean) => void;
+    setIsRegisterOpen: (isOpen: boolean) => void;
     resetSingleGame: () => void;
     openToast: (type: "success" | "error" | "", message: string) => void;
     handleBetStart: (userId: string, money: string) => void;
@@ -55,7 +59,7 @@ const useDataStore = create<DataState>((set, get) => ({
   isLoginOpen: false,
   isRegisterOpen: false,
   isLoggingLoading: false,
-  isRegisteringLodaing: false,
+  isRegisteringLoading: false,
   toasts: [],
   fetchData: {
     games: async () => {
@@ -96,6 +100,18 @@ const useDataStore = create<DataState>((set, get) => ({
       set({ data: get().data.filter((game) => game.id !== id) });
       get().actions.openToast("success", "Game deleted successfully!");
     },
+    updateGame: async (id: number, game) => {
+      const data = await handleFetch<GameData>({
+        url: `${API_URL}/games/${id}`,
+        method: "PUT",
+        body: game,
+      });
+      set({
+        data: get().data.map((g) => (g.id === id ? { ...g, ...data } : g)),
+      });
+      get().actions.openToast("success", "Game updated successfully!");
+      get().fetchData.games();
+    },
   },
   handleLogin: async ({ username, password }) => {
     set({ isLoggingLoading: true });
@@ -131,7 +147,7 @@ const useDataStore = create<DataState>((set, get) => ({
     get().actions.openToast("success", "You have logged out!");
   },
   handleRegister: async ({ username, email, password }) => {
-    set({ isRegisteringLodaing: true });
+    set({ isRegisteringLoading: true });
     const data = (await handleFetch({
       url: `${API_URL}/register`,
       method: "POST",
@@ -142,14 +158,14 @@ const useDataStore = create<DataState>((set, get) => ({
       },
     })) as { message: string };
     if (data.message && data.message === "OK") {
-      set({ isRegisteringLodaing: false });
+      set({ isRegisteringLoading: false });
       get().actions.openToast("success", "Your account has been created!");
     } else {
-      set({ isRegisteringLodaing: false });
+      set({ isRegisteringLoading: false });
       get().actions.openToast("error", "Error creating account!");
     }
 
-    set({ isRegisteringLodaing: false });
+    set({ isRegisteringLoading: false });
   },
   actions: {
     resetSingleGame: () => {
